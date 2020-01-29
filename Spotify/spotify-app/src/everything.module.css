@@ -1,0 +1,43 @@
+.gradient {
+    /* standard gradient background */
+    background: linear-gradient(#41B6B6, #9E41B6);
+  
+    /* clip hackery */
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 300px;
+  }
+
+  .title {
+      color: blueviolet
+  }
+
+  .home {
+    background: linear-gradient(#41B6B6, #9E41B6);
+  
+    /* clip hackery */
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 150px;
+
+  }
+
+  /* Style the header */
+.header {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* background: linear-gradient(#41B6B6, #9E41B6);
+    background-clip: text;
+    -webkit-text-fill-color: black;
+    font-size: 150px;  */
+  z-index: 22;
+}

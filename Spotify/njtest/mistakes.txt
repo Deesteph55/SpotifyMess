@@ -1,0 +1,242 @@
+ /*state = {
+    contacts: []
+  };*/
+
+  /* componentDidMount() {
+    axios.get("http://jsonplaceholder.typicode.com/users").then(response => {
+      console.log(response);
+      this.setState({
+        contacts: response.data
+      });
+    });
+  }
+*/
+
+ {/*} <img src={logo} className="App-logo" alt="logo" />
+        <h1>Spotify</h1>
+        <ul>
+          {this.state.contacts.map(contact => (
+            <li key={contact.id}>{contact.name}</li>
+          ))}
+        </ul>
+          </div>*/}
+
+          // createTable = () => {
+  //   let table = []
+  //   for (let i = 0; i < 3; i++) {
+  //     let children = []
+  //     //Inner loop to create children
+  //     for (let j = 0; j < 5; j++) {
+  //       children.push(<td>{`Column ${j + 1}`}</td>)
+  //     }
+  //     //Create the parent and add the children
+  //     table.push(<tr>{children}</tr>)
+  //   }
+  //   return table
+
+  // }
+
+  //   fetchResults = (query) => {
+  //     spotifyApi.searchTracks("Love").then(
+  //       function(data) {
+  //         console.log('Search by "Love"', data);
+  //       },
+  //       function(err) {
+  //         console.error(err);
+  //       }
+  //     );
+  //   };
+
+    fetchSearchResults = (updatedPageNo = "", query) => {
+    const pageNumber = updatedPageNo ? `&page=${updatedPageNo}` : "";
+    // By default the limit of results is 20
+    const searchUrl = `https://pixabay.com/api/?key=12413278-79b713c7e196c7a3defb5330e&q=${query}${pageNumber}`;
+    if (this.cancel) {
+      // Cancel the previous request before making a new request
+      this.cancel.cancel();
+    }
+    // Create a new CancelToken
+    this.cancel = axios.CancelToken.source();
+    axios
+      .get(searchUrl, {
+        cancelToken: this.cancel.token
+      })
+      .then(res => {
+        const resultNotFoundMsg = !res.data.hits.length
+          ? "There are no more search results. Please try a new search."
+          : "";
+        this.setState({
+          results: res.data.hits,
+          message: resultNotFoundMsg,
+          loading: false
+        });
+      })
+      .catch(error => {
+        if (axios.isCancel(error) || error) {
+          this.setState({
+            loading: false,
+            message: "Failed to fetch results.Please check network"
+          });
+        }
+      });
+  };
+
+  
+  // getNowPlaying = () => {
+  //   spotifyApi.getMyCurrentPlaybackState()
+  //    .then((response) => {
+  //      this.setState({
+  //        nowPlaying: {
+  //          name: response.item.name,
+  //          image: response.item.album.images[0].url
+  //        }
+  //      });
+  //    })
+  // }
+
+  // this.setState({
+        //   loading: false,
+        //   message: "Failed to fetch results. Please check network"
+        // });
+
+  render() {
+    const {message} = this.state; 
+    return (
+      <div className="container">
+        {/*Heading*/}
+        <h2 className="heading">Search me</h2>
+        {/*Search Input*/}
+        <label className="search-label" htmlFor="search-input">
+          <input
+            type="text"
+            value={this.state.query}
+            id="search-input"
+            placeholder="Search..."
+            onChange={this.handleOnInputChange}
+          />
+          <Icon color="red" name="search" className="search-icon" />
+        </label>
+        {/* {this.renderSearchResults()} */}
+        {message && <p className="message">{message}</p>}
+      </div>
+    );
+  }
+}
+
+<a href="http://localhost:8888">
+            {/* <button>Login with Spotify</button> */}
+            {!this.state.loggedIn ? <Button inverted color="red">
+              {" "}
+              Login to Spotify
+            </Button> : null }
+            
+          </a>
+
+
+import React, { Component } from "react";
+import { Grid, Image, Container } from "semantic-ui-react";
+import SpotifyWebAPI from "spotify-web-api-js";
+import { Suggestions } from "./Suggestions";
+const spotifyApi = new SpotifyWebAPI();
+
+export class Popular extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      results: [],
+      queryOne: "",
+      queryTwo: ""
+    };
+  }
+
+  getArtistOne = () => {
+    spotifyApi.searchArtists(this.state.queryOne).then(response => {
+      this.setState({
+        results: response.artists.items
+      });
+    });
+  };
+
+  getArtistTwo = () => {
+    spotifyApi.searchArtists(this.state.queryTwo).then(response => {
+      this.setState({
+        results: response.artists.items
+      });
+    });
+  };
+
+  handleInputOneChange = () => {
+    this.setState(
+      {
+        queryOne: this.search.value
+      },
+      () => {
+        if (this.state.queryOne && this.state.queryOne.length > 1) {
+          if (this.state.queryOne.length % 2 === 0) {
+            this.getArtistOne();
+          }
+        }
+      }
+    );
+  };
+
+  handleInputTwoChange = () => {
+    this.setState(
+      {
+        queryTwo: this.search.value
+      },
+      () => {
+        if (this.state.queryTwo && this.state.queryTwo.length > 1) {
+          if (this.state.queryTwo.length % 2 === 0) {
+            this.getArtistTwo();
+          }
+        }
+      }
+    );
+  };
+
+
+  render() {
+    return (
+      <div>
+        <div>
+          <h1>Which one of your favorite artists is the most popular</h1>
+        </div>
+        <Grid columns={2} padded>
+          <Grid.Column>
+            <form>
+              <input
+                // value={this.state.query}
+                onChange={this.handleInputOneChange}
+                placeholder="Artist 1"
+                ref={input => (this.search = input)}
+              />
+              {this.state.queryOne.length < 1 ? null : (
+                <Suggestions results={this.state.results} />
+              )}
+            </form>
+          </Grid.Column>
+          <Grid.Column>
+            <form>
+              <input 
+              onChange={this.handleInputTwoChange}
+              placeholder="Artist 2"
+              ref={input => (this.search = input)}
+              
+              />
+              {this.state.queryTwo.length < 1 ? null : (
+                <Suggestions results={this.state.results} />
+              )}
+              {/* <p>{this.state.queryTwo}</p> */}
+            </form>
+          </Grid.Column>
+        </Grid>
+        <Container>The results</Container>
+      </div>
+    );
+  }
+}
+
+"scripts": {
+    "start": "node authorization_code/app.js"
+  }
