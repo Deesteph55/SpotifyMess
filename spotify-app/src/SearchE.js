@@ -68,7 +68,7 @@ export class SearchE extends Component {
           placeholder="Search"
           name="form"
         />
-        {this.state.query.length > 1 ? (
+        {this.state.query.length > 0 ? (
           <SearchEList
             track={this.state.trackR}
             artist={this.state.artistR}
