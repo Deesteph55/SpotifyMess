@@ -1,5 +1,7 @@
 import React from "react";
-import { Button, Card, Image, Icon, Grid } from "semantic-ui-react";
+import { makeStyles } from '@material-ui/core/styles';
+import { Card, CardActionArea, CardActions, CardMedia, CardContent } from '@material-ui/core';
+import { Grid, GridList, GridListTile, GridListTileBar, ListSubheader } from '@material-ui/core';
 
 export const SearchEList = ({ track, artist, album, playlist }) => {
   console.log('the returned');
@@ -16,79 +18,85 @@ export const SearchEList = ({ track, artist, album, playlist }) => {
   const albumSrc = 'https://cdn1.iconfinder.com/data/icons/weby-flat-multimedia/64/multimedia-22-512.png'
   const songSrc = 'https://lh3.googleusercontent.com/proxy/k7o1IUmmfsHpRW5vq-ATiD9KmTxhAfVs2q4w9_UPkf1_ZNnqZCCwOisOhKITE2HcUZ24kN57q8-pcMXD6M0ngbpU0Iq10sBZ-hk1_jYSOt0vDzVi7VTWurxijEHl57MPSpcX7Big40T17A'
 
+  const useStyles = makeStyles(theme => ({
+    root: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-around',
+      overflow: 'hidden',
+      backgroundColor: theme.palette.background.paper,
+    },
+    gridList: {
+      width: 500,
+      height: 450,
+    },
+    icon: {
+      color: 'rgba(255, 255, 255, 0.54)',
+    },
+  }));
+
+  const classes = useStyles();
   return (
-    <div>
-      <Grid columns={3} divided centered>
-        <Grid.Row>
-          <Grid.Column>
-            Songs
-            <Card.Group centered itemsPerRow={2} >
-              {track.map(unit => (
-                <Card key={unit.id} color="purple" >
-                  <Image src={unit.album.images.length ? unit.album.images[0].url : songSrc} size="mini" />
-                  <Card.Content>
-                    <Card.Header>{unit.name}</Card.Header>
-                  </Card.Content>
-                  <Card.Meta>
-                    {unit.artists[0].name}
-                  </Card.Meta>
-                </Card>
-              ))}
-            </Card.Group>
-          </Grid.Column>
-          <Grid.Column>
-            Album
-            <Card.Group centered itemsPerRow={2}>
-              {album.map(unit => (
-                <Card key={unit.id} color="pink" size="mini">
-                  <Image src={unit.images.length ? unit.images[0].url : albumSrc} size="mini" />
-                  <Card.Content>
-                    <Card.Header>{unit.name}</Card.Header>
-                  </Card.Content>
-                  <Card.Meta>
-                    {unit.artists[0].name}
-                  </Card.Meta>
-                </Card>
-              ))}
-            </Card.Group>
-          </Grid.Column>
-        </Grid.Row>
 
-        <Grid.Row>
-          <Grid.Column>
-            Artist
-            <Card.Group centered itemsPerRow={2}>
-              {artist.map(unit => (
-                <Card key={unit.id} color="teal" size="small">
+    <div className={classes.root}>
+      <GridList cellHeight={180} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+          <ListSubheader component="div">Songs</ListSubheader>
+        </GridListTile>
+        {track.map(unit => (
+          <GridListTile key={unit.id}>
+            <img src={unit.album.images.length ? unit.album.images[0].url : songSrc} />
+            <GridListTileBar
+              title={unit.name}
+              subtitle={<span>by: {unit.artists[0].name}</span>}
+            />
+          </GridListTile>
+        ))}
+      </GridList>
 
-                  <Image src={unit.images.length ? unit.images[0].url : artistSrc} size="mini" />
-                  <Card.Content>
-                    <Card.Header>{unit.name}</Card.Header>
-                  </Card.Content>
-                </Card>
-              ))}
-            </Card.Group>
-          </Grid.Column>
-          <Grid.Column>
-            Playlist
-            <Card.Group centered itemsPerRow={2}>
-              {playlist.map(unit => (
-                <Card key={unit.id} color="olive" size="mini">
-                  <Image 
-                  src={unit.images.length ? unit.images[0].url : playlistSrc} />
-                  <Card.Content>
-                    <Card.Header>{unit.name}</Card.Header>
-                  </Card.Content>
-                  <Card.Meta>
-                    Owner:
-                    {unit.owner.display_name}
-                  </Card.Meta>
-                </Card>
-              ))}
-            </Card.Group>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <GridList cellHeight={180} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+          <ListSubheader component="div">Albums</ListSubheader>
+        </GridListTile>
+        {album.map(unit => (
+          <GridListTile key={unit.id}>
+            <img src={unit.images.length ? unit.images[0].url : albumSrc} />
+            <GridListTileBar
+              title={unit.name}
+              subtitle={<span>by: {unit.artists[0].name}</span>}
+            />
+          </GridListTile>
+        ))}
+      </GridList>
+
+      <GridList cellHeight={180} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+          <ListSubheader component="div">Artists</ListSubheader>
+        </GridListTile>
+        {artist.map(unit => (
+          <GridListTile key={unit.id}>
+            <img src={unit.images.length ? unit.images[0].url : artistSrc} />
+            <GridListTileBar
+              title={unit.name}
+            />
+          </GridListTile>
+        ))}
+      </GridList>
+
+      <GridList cellHeight={180} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+          <ListSubheader component="div">Playlists</ListSubheader>
+        </GridListTile>
+        {playlist.map(unit => (
+          <GridListTile key={unit.id}>
+            <img src={unit.images.length ? unit.images[0].url : playlistSrc} />
+            <GridListTileBar
+              title={unit.name}
+              subtitle={<span>Created by: {unit.owner.display_name}</span>}
+            />
+          </GridListTile>
+        ))}
+      </GridList>
     </div>
   );
 

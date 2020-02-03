@@ -240,3 +240,117 @@ export class Popular extends Component {
 "scripts": {
     "start": "node authorization_code/app.js"
   }
+
+  ====================================================================================
+  <Grid columns={3} divided centered>
+        <Grid.Row>
+          <Grid.Column>
+            Songs
+            <Card.Group centered itemsPerRow={2} >
+              {track.map(unit => (
+                <Card key={unit.id} color="purple" >
+                  <Image src={unit.album.images.length ? unit.album.images[0].url : songSrc} size="mini" />
+                  <Card.Content>
+                    <Card.Header>{unit.name}</Card.Header>
+                  </Card.Content>
+                  <Card.Meta>
+                    {unit.artists[0].name}
+                  </Card.Meta>
+                </Card>
+              ))}
+            </Card.Group>
+          </Grid.Column>
+          <Grid.Column>
+            Album
+            <Card.Group centered itemsPerRow={2}>
+              {album.map(unit => (
+                <Card key={unit.id} color="pink" size="mini">
+                  <Image src={unit.images.length ? unit.images[0].url : albumSrc} size="mini" />
+                  <Card.Content>
+                    <Card.Header>{unit.name}</Card.Header>
+                  </Card.Content>
+                  <Card.Meta>
+                    {unit.artists[0].name}
+                  </Card.Meta>
+                </Card>
+              ))}
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column>
+            Artist
+            <Card.Group centered itemsPerRow={2}>
+              {artist.map(unit => (
+                <Card key={unit.id} color="teal" size="small">
+
+                  <Image src={unit.images.length ? unit.images[0].url : artistSrc} size="mini" />
+                  <Card.Content>
+                    <Card.Header>{unit.name}</Card.Header>
+                  </Card.Content>
+                </Card>
+              ))}
+            </Card.Group>
+          </Grid.Column>
+          <Grid.Column>
+            Playlist
+            <Card.Group centered itemsPerRow={2}>
+              {playlist.map(unit => (
+                <Card key={unit.id} color="olive" size="mini">
+                  <Image 
+                  src={unit.images.length ? unit.images[0].url : playlistSrc} />
+                  <Card.Content>
+                    <Card.Header>{unit.name}</Card.Header>
+                  </Card.Content>
+                  <Card.Meta>
+                    Owner:
+                    {unit.owner.display_name}
+                  </Card.Meta>
+                </Card>
+              ))}
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+
+
+      ========================================================================
+      <Grid columns={5}>
+            <Header>Your top songs</Header>
+            <Grid.Row>
+              {topTracks.map(track => (
+                <Grid.Column>
+                  <Card key={track.id}>
+                    <Image src={track.album.images[0].url} wrapped ui={false} />
+                    <Card.Content inverted>
+                    <Card.Header>{track.name}</Card.Header>
+                    <Card.Meta>{track.artists[0].name} </Card.Meta>
+                    </Card.Content>
+                  </Card>
+                </Grid.Column>
+              ))}
+            </Grid.Row>
+
+            <Header>Your top artists</Header>
+            <Grid.Row>
+              {topArtists.map(artist => (
+                <Grid.Column>
+
+             {/* <Card key={artist.id}> */}
+                    <Image src={artist.images[0].url} circular />
+                    <Header>{artist.name}</Header>
+                     {/* <img
+                      src={artist.images[0].url}
+                      class="ui medium circular image"
+                      width="50px"
+                    />  */}
+                    {/* <Card.Content>
+                      <Card.Header>{artist.name}</Card.Header>
+                    </Card.Content>
+                  </Card>  */}
+                    
+                </Grid.Column>
+              ))}
+            </Grid.Row>
+          </Grid>
