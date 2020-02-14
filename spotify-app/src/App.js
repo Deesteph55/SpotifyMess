@@ -93,7 +93,7 @@ class App extends Component {
         {!this.state.loggedIn ? (
           <div>
             <h1>DENS</h1>
-            <a href="http://localhost:8888">
+            <a href="http://localhost:8888/login">
               <Button inverted color="red">
                 {" "}
                 Login to Spotify
