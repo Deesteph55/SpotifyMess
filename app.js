@@ -42,6 +42,12 @@ app.use(express.static(__dirname + '/build'))
    .use(cors())
    .use(cookieParser());
 
+if(process.env.NODE_ENV === 'production') 
+{  
+  app.use(express.static(path.join(__dirname, '/build'))); 
+  app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = '/build/index.html'));  
+})}
+
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
