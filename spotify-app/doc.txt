@@ -1,0 +1,1 @@
+why did float left for the search box work but not margin left or text align left?

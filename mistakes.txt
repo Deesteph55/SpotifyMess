@@ -360,3 +360,24 @@ export class Popular extends Component {
             access_token: access_token,
             refresh_token: refresh_token
           }));
+
+          <List selection >
+          {songs.map(song => (
+            <List.Item key={song.track.id}>
+              <Image
+                avatar
+                src={song.track.album.images[0].url}
+              />
+              <List.Content>
+                <List.Header color="red" as="a">{song.track.name}</List.Header>
+                <List.Description>
+                  By{" "}
+                  <a>
+                    <b>{song.track.artists[0].name}</b>
+                  </a>
+                  {" "}
+                </List.Description>
+              </List.Content>
+            </List.Item>
+          ))}
+        </List>

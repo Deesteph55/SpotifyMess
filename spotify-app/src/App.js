@@ -10,6 +10,7 @@ import {
 } from "semantic-ui-react";
 import { Navbar } from "./Navbar";
 import { Dashboard } from "./Dashboard";
+import { Home } from "./Home";
 //NAME OF THIS APP IS DENS
 const spotifyApi = new SpotifyWebAPI();
 var token;
@@ -33,7 +34,7 @@ class App extends Component {
       showNowPlaying: false,
       showPopular: false,
       showSearchE: false,
-      showHome: false
+      showHome: true
     };
   }
   getHashParams() {
@@ -104,20 +105,32 @@ class App extends Component {
 
         {this.state.loggedIn ? (
           <div>
-            <Navbar
-              openSearch={this.handleOpenSearchE}
-              openTracks={this.handleOpenTracks}
-              openPopular={this.handleOpenPopular}
-              openHome={this.handleHome}
-            />
-            <Container style={{ width: "100%", paddingRight: "0px" }} textAlign='center' style={{marginTop: '50px'}}>
-              <Dashboard 
+            <div>
+              <Navbar
+                openSearch={this.handleOpenSearchE}
+                openTracks={this.handleOpenTracks}
+                openPopular={this.handleOpenPopular}
+                openHome={this.handleHome}
+              />
+            </div>
+
+            <div
+              style={{
+                width: "100%",
+                marginTop: "50px",
+                marginLeft: "15.05em",
+                marginTop: "0px",
+                // backgroundColor: "red",
+                paddingRight: "200px"
+              }}
+            >
+              <Dashboard
                 showSearchE={showSearchE}
                 showTracks={showTracks}
                 showPopular={showPopular}
                 showHome={showHome}
               />
-            </Container>
+            </div>
           </div>
         ) : null}
       </div>

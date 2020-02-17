@@ -82,20 +82,11 @@ export class Popular extends Component {
     });
   };
 
-  // compareThem = () => {
-  //   {
-  //     <h1>HAHHAHA</h1>;
-  //   }
-  //   // return (
-
-  //   // )
-  // };
-
   render() {
     return (
       <div>
         <div>
-          <h1>Which one of your favorite artists is the most popular</h1>
+          <h1>Which artist amongst your favorites is the most popular</h1>
         </div>
         <Grid columns={2} padded>
           <Grid.Column>

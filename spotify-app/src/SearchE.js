@@ -59,16 +59,20 @@ export class SearchE extends Component {
   };
 
   render() {
-    const unit = document.getElementById("form")
+    const unit = document.getElementById("form");
     return (
-      <Container textAlign="center">
-        <input
-          value={this.state.query}
-          onChange={e => this.handleOnInputChange(e)}
-          placeholder="Search"
-          name="form"
-        />
-        {this.state.query.length > 0 ? (
+      <div>
+        <div style={{ marginTop:'10px', marginLeft: '10px', float:'left' }}>
+          <input
+            value={this.state.query}
+            onChange={e => this.handleOnInputChange(e)}
+            placeholder="Search"
+            name="form"
+            align = 'left'
+          />
+        </div>
+        <div style={{margin: '5px'}}>
+          {this.state.query.length > 0 ? (
           <SearchEList
             track={this.state.trackR}
             artist={this.state.artistR}
@@ -76,7 +80,9 @@ export class SearchE extends Component {
             playlist={this.state.playlistR}
           />
         ) : null}
-      </Container>
+        </div>
+        
+      </div>
     );
   }
 }

@@ -78,8 +78,10 @@ export class Home extends Component {
           <h1 style={{ fontSize: "100px" }}>HOME</h1>
         </div>
         <div style={{ marginTop: "50px" }} className={useStyles.root}>
-          <GridList className={useStyles.gridList} cols={2.5}>
-            Your Top Songs
+
+          <p style={{color: 'teal', fontWeight:'bold', textAlign:'left'}}> Your Top Songs </p>
+          
+          <GridList className={useStyles.gridList} cols={5}>
             {topTracks.map(track => (
               <GridListTile key={track.id}>
                 <img src={track.album.images[0].url}  />
@@ -94,11 +96,12 @@ export class Home extends Component {
             ))}
           </GridList>
 
-          <GridList className={useStyles.gridList} cols={2.5}>
-            Your Top Artists
+          <p style={{color: 'teal', fontWeight:'bold', textAlign:'left'}}> Your Top Artists </p>
+          <GridList className={useStyles.gridList} cols={5}>
+
             {topArtists.map(artist => (
               <GridListTile key={artist.id}>
-                <img src={artist.images[0].url} className={useStyles.image} />
+                <img src={artist.images[0].url} style={{borderRadius: '50%', padding: '16px'}} />
                 <GridListTileBar
                   title={artist.name}
                   classes={{
