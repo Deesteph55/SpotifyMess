@@ -38,6 +38,11 @@ var stateKey = 'spotify_auth_state';
 var app = express();
 
 //app.use(express.static(__dirname + '/public'))
+// if(process.env.NODE_ENV === 'production') 
+// {  
+//   app.use(express.static(path.join(__dirname, '/build'))); 
+//   //app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = '/build/index.html'));  
+// }
 app.use(express.static(__dirname + '/build'))
    .use(cors())
    .use(cookieParser());
@@ -63,6 +68,10 @@ app.get('/login', function(req, res) {
       redirect_uri: redirect_uri,
       state: state
     }));
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/build/index.html'));
 });
 
 app.get('/callback', function(req, res) {
