@@ -123,6 +123,7 @@ class App extends Component {
                 marginTop: "0px",
                 // backgroundColor: "red",
                 paddingRight: "200px"
+                //backgroundColor: 'grey'
               }}
             >
               <Dashboard

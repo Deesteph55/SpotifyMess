@@ -3,10 +3,6 @@ import ReactDOM from "react-dom";
 import { Route, Link, BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import Search from "./Search";
-import Tracks from "./Tracks";
-import Playing from "./Playing";
-import SpotifyWebAPI from "spotify-web-api-js";
 import { token, rtoken } from "./App";
 
 import * as serviceWorker from "./serviceWorker";

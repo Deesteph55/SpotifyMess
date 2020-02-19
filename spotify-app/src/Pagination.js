@@ -12,11 +12,11 @@ export const Pagination = ({paginate, totalTracks, currentPage}) => {
     <div>
       <ul>
         <button>
-          <a onClick={() => paginate(currentPage + 1)}>Previous</a>
+          <a onClick={() => paginate(currentPage - 1)}>Previous</a>
         </button>
 
         <button>
-          <a onClick={() => paginate(currentPage - 1)}>Next</a>
+          <a onClick={() => paginate(currentPage + 1)}>Next</a>
         </button>
       </ul>
     </div>
