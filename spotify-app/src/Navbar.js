@@ -22,6 +22,7 @@ export const Navbar = ({ openSearch, openTracks, openPopular, openHome }) => {
           <Button onClick={openPopular} content="Popular" />
         </Menu.Item>
       </Container>
+      
     </Menu>
   );
 };

@@ -12,6 +12,7 @@ import {
 } from "semantic-ui-react";
 import styles from "./everything.module.css";
 import { Link } from "@material-ui/core";
+
 const spotifyApi = new SpotifyWebAPI();
 
 // const script = document.createElement("script");
@@ -19,43 +20,56 @@ const spotifyApi = new SpotifyWebAPI();
 // script.async = true;
 // document.body.appendChild(script);
 
-
-
 export class Tracks extends Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
     const header = document.getElementById("tracked");
     this.state = {
-      tracks: []
+      tracks: [],
+      total: 0,
+      artistName: '',
+      showArtist: false
     };
-    
   }
 
-  
   getMyTracks = () => {
     spotifyApi.getMySavedTracks({ limit: 50 }).then(response => {
       this.setState({
-        tracks: response.items
+        tracks: response.items,
+        total: response.total
       });
     });
   };
 
-  
+  // getIndividualArtists = (id) => {
+  //   spotifyApi.getArtist(id).then(response=> {
+  //     this.setState({
+  //       artistName: response.name
+  //     })
+  //   })
+  // }
+
+  // handleArtistClick = () => {
+  //   this.setState({
+  //     showArtist: true
+  //   })
+  //   this.props.showTracks = false;
+  // }
+
   componentDidMount() {
     this.getMyTracks();
-  
   }
 
   render() {
     const songs = this.state.tracks.filter(item => item.track);
     console.log(songs);
-    
 
     return (
       <div>
         <div className={styles.sticky}>
-          <h1 style={{ fontSize: "50px", textAlign: 'left' }}>Tracks</h1>
+          <h1 style={{ fontSize: "50px", textAlign: "left" }}>Tracks</h1>
+          <p style={{ fontWeight: 'bold', textAlign: "left" }}>{this.state.total} songs</p>
         </div>
         <div>
           <Table color="teal" inverted celled selectable>

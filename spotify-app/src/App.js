@@ -100,6 +100,7 @@ class App extends Component {
                 Login to Spotify
               </Button>
             </a>
+            <p>This button will lead you to Spotify who will authenticate you</p>
           </div>
         ) : null}
 
