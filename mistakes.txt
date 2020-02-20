@@ -386,3 +386,10 @@ export class Popular extends Component {
     "start": "node app.js",
     "heroku-postbuild": "cd spotify-app && npm install && npm run build"
   }
+
+  "scripts": {
+    "start": "node app.js",
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false npm install --prefix spotify-app  && npm run build --prefix spotify-app && npm start",
+    "server": "node app.js"
+  }
+}

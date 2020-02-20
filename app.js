@@ -1,3 +1,4 @@
+
 /**
  * This is an example of a basic node.js script that performs
  * the Authorization Code oAuth2 flow to authenticate against
@@ -13,10 +14,16 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var path = require('path'); 
+var dotenv = require('dotenv');
+dotenv.config({path: path.resolve(__dirname+'/.env')})
+//console.log(process.env);
 
-var client_id = 'cee959f14e8e4d4da32f7d6e6b76fc28'; // Your client id
-var client_secret = 'c66c7242148c455c800506baa236b06c'; // Your secret
+var client_id = process.env.API_ID; // Your client id
+console.log(client_id);
+var client_secret = process.env.API_KEY; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+
 
 /**
  * Generates a random string containing numbers and letters
@@ -38,11 +45,11 @@ var stateKey = 'spotify_auth_state';
 var app = express();
 
 //app.use(express.static(__dirname + '/public'))
-if(process.env.NODE_ENV === 'production') 
-{  
-  app.use(express.static(path.join(__dirname, '/build'))); 
-  app.get('/*', (req, res) => { res.sendfile(path.join(__dirname = '/build/index.html')); }) 
-}
+// if(process.env.NODE_ENV === 'production') 
+// {  
+//   app.use(express.static(path.join(__dirname, '/build'))); 
+//   app.get('/*', (req, res) => { res.sendfile(path.join(__dirname = '/build/index.html')); }) 
+// }
 
 app.use(express.static(__dirname + '/build'))
    .use(cors())
@@ -71,9 +78,9 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/build/index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname+'/build/index.html'));
+// });
 
 app.get('/callback', function(req, res) {
 
