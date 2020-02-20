@@ -50,8 +50,8 @@ var app = express();
 //   app.use(express.static(path.join(__dirname, '/build'))); 
 //   app.get('/*', (req, res) => { res.sendfile(path.join(__dirname = '/build/index.html')); }) 
 // }
-
-app.use(express.static(__dirname + 'spotify-app/build'))
+app.use(express.static(path.join(__dirname, 'spotify-app/build')))
+// app.use(express.static(__dirname + 'spotify-app/build'))
    .use(cors())
    .use(cookieParser());
 
