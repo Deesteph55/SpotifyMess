@@ -22,7 +22,8 @@ dotenv.config({path: path.resolve(__dirname+'/.env')})
 var client_id = process.env.API_ID; // Your client id
 console.log(client_id);
 var client_secret = process.env.API_KEY; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+//var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var redirect_uri = "https://spotifyreactash.herokuapp.com/callback";
 
 
 /**

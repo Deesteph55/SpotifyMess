@@ -1,1 +1,2 @@
 why did float left for the search box work but not margin left or text align left?
+gotten to a point where heroku seems like it sis going to work. now the process env that was working for me before is no longer working
