@@ -393,3 +393,14 @@ export class Popular extends Component {
     "server": "node app.js"
   }
 }
+do this for app.js
+if (process.env.NODE_ENV !== 'production') {
+		  if (/localhost:3000\/$/.test(window.location.href)) {
+				window.location.replace("https://accounts.spotify.com/authorize?client_id=6370e456654740c8bf8d82444a8b950b&redirect_uri=http:%2F%2Flocalhost%3A%33%30%30%30&response_type=token&state=123")
+			}
+		}
+		else {
+			if (/advanced-spotify.surge.sh\/$/.test(window.location.href)) {
+				window.location.replace("https://accounts.spotify.com/authorize?client_id=6370e456654740c8bf8d82444a8b950b&redirect_uri=http:%2F%2Fadvanced-spotify.surge.sh&response_type=token&state=123")
+			}
+		}

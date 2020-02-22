@@ -71,7 +71,7 @@ export class SearchE extends Component {
             align = 'left'
           />
         </div>
-        <div style={{margin: '5px'}}>
+        <div >
           {this.state.query.length > 0 ? (
           <SearchEList
             track={this.state.trackR}

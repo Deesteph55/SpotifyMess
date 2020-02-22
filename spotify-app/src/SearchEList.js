@@ -31,9 +31,10 @@ export const SearchEList = ({ track, artist, album, playlist }) => {
 
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+        {/* <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Songs</ListSubheader>
-        </GridListTile>
+        </GridListTile> */}
+        {/* <p>Songs</p> */}
         {track.map(unit => (
           <GridListTile key={unit.id}>
             <img src={unit.album.images.length ? unit.album.images[0].url : songSrc} />

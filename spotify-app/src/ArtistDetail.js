@@ -1,10 +1,13 @@
 import React from 'react'
 
 //showtracks will be false, showartsist will be true
-export const ArtistDetail = ({showArtsist, showTracks}) => {
+export const ArtistDetail = (props) => {
+    console.log("the prop name")
+    console.log(props.name);
     return (
         <div>
-            
+            <h1> The artist is </h1>
+            <p>{props.name}</p>
         </div>
     )
 }

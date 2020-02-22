@@ -12,6 +12,7 @@ import {
 } from "semantic-ui-react";
 import styles from "./everything.module.css";
 import { Link } from "@material-ui/core";
+import { ArtistDetail } from "./ArtistDetail";
 
 const spotifyApi = new SpotifyWebAPI();
 
@@ -23,8 +24,6 @@ const spotifyApi = new SpotifyWebAPI();
 export class Tracks extends Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();
-    const header = document.getElementById("tracked");
     this.state = {
       tracks: [],
       total: 0,
@@ -42,20 +41,12 @@ export class Tracks extends Component {
     });
   };
 
-  // getIndividualArtists = (id) => {
-  //   spotifyApi.getArtist(id).then(response=> {
-  //     this.setState({
-  //       artistName: response.name
-  //     })
-  //   })
-  // }
+  openArtist = (name) => {
 
-  // handleArtistClick = () => {
-  //   this.setState({
-  //     showArtist: true
-  //   })
-  //   this.props.showTracks = false;
-  // }
+    //alert("clicking is working")
+    const artist = <ArtistDetail name="francis"/>
+    this.props.switchView("ADetail");
+  }
 
   componentDidMount() {
     this.getMyTracks();
@@ -93,7 +84,7 @@ export class Tracks extends Component {
                     {song.track.name}
                   </TableCell>
                   <TableCell>
-                    <Link>{song.track.artists[0].name}</Link>
+                    <Link onClick={() => this.openArtist(song.track.artists[0].name)}>{song.track.artists[0].name}</Link>
                   </TableCell>
                   <TableCell>{song.track.album.name}</TableCell>
                 </TableRow>

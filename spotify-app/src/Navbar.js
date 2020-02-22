@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Menu, Container, Button, Header, Icon } from "semantic-ui-react";
 
-export const Navbar = ({ openSearch, openTracks, openPopular, openHome }) => {
+export const Navbar = ({ switchView }) => {
   return (
     <Menu fixed="left" inverted vertical>
       <Container>
@@ -10,19 +10,18 @@ export const Navbar = ({ openSearch, openTracks, openPopular, openHome }) => {
           <Header.Content>DENS</Header.Content>
         </Header>
         <Menu.Item>
-          <Button onClick={openHome} content="Home" />
+          <Button onClick={() => switchView("Home")} content="Home" />
         </Menu.Item>
         <Menu.Item>
-          <Button onClick={openTracks} content="Tracks" />
+          <Button onClick={() => switchView("Tracks")} content="Tracks" />
         </Menu.Item>
         <Menu.Item>
-          <Button onClick={openSearch} content="Search" />
+          <Button onClick={() => switchView("SearchE")} content="Search" />
         </Menu.Item>
         <Menu.Item>
-          <Button onClick={openPopular} content="Popular" />
+          <Button onClick={() => switchView("Popular")} content="Popular" />
         </Menu.Item>
       </Container>
-      
     </Menu>
   );
 };
