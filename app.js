@@ -18,11 +18,10 @@ var path = require('path');
 var dotenv = require('dotenv');
 dotenv.config({path: path.resolve(__dirname+'/.env')})
 //console.log(process.env);
-
+//possible redirect https://accounts.spotify.com:8000/authorize
 var client_id = process.env.API_ID; // Your client id
-console.log(client_id);
 var client_secret = process.env.API_KEY; // Your secret
-// var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+//var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 var redirect_uri = "https://spotifyreactash.herokuapp.com/callback";
 
 
@@ -45,22 +44,9 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-//app.use(express.static(__dirname + '/public'))
-// if(process.env.NODE_ENV === 'production') 
-// {  
-//   app.use(express.static(path.join(__dirname, '/build'))); 
-//   app.get('/*', (req, res) => { res.sendfile(path.join(__dirname = '/build/index.html')); }) 
-// }
 app.use(express.static(path.join(__dirname, 'spotify-app/build')))
-// app.use(express.static(__dirname + 'spotify-app/build'))
    .use(cors())
    .use(cookieParser());
-
-// if(process.env.NODE_ENV === 'production') 
-// {  
-//   app.use(express.static(path.join(__dirname, '/build'))); 
-//   //app.get('*', (req, res) => {    res.sendfile(path.join(__dirname = '/build/index.html'));  
-// }
 
 app.get('/login', function(req, res) {
 
@@ -78,10 +64,6 @@ app.get('/login', function(req, res) {
       state: state
     }));
 });
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname+'/build/index.html'));
-// });
 
 app.get('/callback', function(req, res) {
 
@@ -130,8 +112,8 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        //  res.redirect('http://localhost:3000/#'+
-        res.redirect('https://spotifyreactash.herokuapp.com/#'+
+         // res.redirect('http://localhost:3000/#'+
+         res.redirect('https://spotifyreactash.herokuapp.com/#'+
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token

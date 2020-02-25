@@ -7,3 +7,4 @@ so switchView will change the state and whatever state currentVIEW is, if you AN
 i can change view to artistDetail from tracks like i did with the rest. lets see..
 I might have to use redux. Bummer
 process.env variable was undefined because i did npm install dotenv instead of npm install dotenv save
+to force two elements to stay on the same line you must put a * beside whatever selector you are using e.g .makeHorizontal * {}
