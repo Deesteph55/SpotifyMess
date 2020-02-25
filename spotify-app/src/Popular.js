@@ -4,6 +4,7 @@ import SpotifyWebAPI from "spotify-web-api-js";
 import { Suggestions } from "./Suggestions";
 import { Compare } from "./Compare";
 const spotifyApi = new SpotifyWebAPI();
+/*You're gonna be popular as some kind of backgroynd*/
 
 export class Popular extends Component {
   constructor(props) {
@@ -15,13 +16,13 @@ export class Popular extends Component {
       queryTwo: "",
       popularityOne: 0,
       popularityTwo: 0,
-      nameOne: "name1",
-      nameTwo: "name2"
+      nameOne: "",
+      nameTwo: ""
     };
   }
 
   getArtistOne = queryOne => {
-    spotifyApi.searchArtists(queryOne).then(response => {
+    spotifyApi.searchArtists(queryOne, { limit: 5 }).then(response => {
       this.setState({
         resultsOne: response.artists.items
       });
@@ -29,7 +30,7 @@ export class Popular extends Component {
   };
 
   getArtistTwo = queryTwo => {
-    spotifyApi.searchArtists(queryTwo).then(response => {
+    spotifyApi.searchArtists(queryTwo, { limit: 5 }).then(response => {
       this.setState({
         resultsTwo: response.artists.items
       });
@@ -86,7 +87,7 @@ export class Popular extends Component {
     return (
       <div>
         <div>
-          <h1>Which artist amongst your favorites is the most popular</h1>
+          <h1>Who amongst your favorite artists is the most popular</h1>
         </div>
         <Grid columns={2} padded>
           <Grid.Column>
@@ -95,7 +96,6 @@ export class Popular extends Component {
                 value={this.state.queryOne}
                 onChange={this.handleInputOneChange}
                 placeholder="Artist 1"
-                // ref={input => (this.search = input)}
               />
               {this.state.queryOne.length < 1 ? null : (
                 <Suggestions
@@ -121,22 +121,22 @@ export class Popular extends Component {
             </form>
           </Grid.Column>
         </Grid>
-        <Container>
-          <h1>The results</h1>
-          Artist 1: {this.state.nameOne}
-          <br></br>
-          <br></br>
-          Artist 2: {this.state.nameTwo}
-          {this.state.popularityTwo != 0 ? (
-            <Compare
-              pop1={this.state.popularityOne}
-              pop2={this.state.popularityTwo}
-              name1={this.state.nameOne}
-              name2={this.state.nameTwo}
-            />
-          ) : null}
-          {this.state.popularityTwo != 0 ? (<Suggestions/> == null) : (<Suggestions/> == null)}
-        </Container>
+        {this.state.nameOne != "" ? (
+          <p>Artist 1: {this.state.nameOne} </p>
+        ) : null}
+
+        {this.state.nameTwo != "" ? (
+          <p>Artist 2: {this.state.nameTwo} </p>
+        ) : null}
+
+        {this.state.popularityTwo != 0 ? (
+          <Compare
+            pop1={this.state.popularityOne}
+            pop2={this.state.popularityTwo}
+            name1={this.state.nameOne}
+            name2={this.state.nameTwo}
+          />
+        ) : null}
       </div>
     );
   }

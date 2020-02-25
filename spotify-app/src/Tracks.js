@@ -13,6 +13,7 @@ import {
 import styles from "./everything.module.css";
 import { Link } from "@material-ui/core";
 import { ArtistDetail } from "./ArtistDetail";
+import {Dashboard} from './Dashboard';
 
 const spotifyApi = new SpotifyWebAPI();
 
@@ -27,8 +28,8 @@ export class Tracks extends Component {
     this.state = {
       tracks: [],
       total: 0,
-      artistName: '',
-      showArtist: false
+      artistName: "",
+      currentArtist: "lala"
     };
   }
 
@@ -41,26 +42,56 @@ export class Tracks extends Component {
     });
   };
 
-  openArtist = (name) => {
-
+  openArtist = name => {
     //alert("clicking is working")
-    const artist = <ArtistDetail name="francis"/>
-    this.props.switchView("ADetail");
-  }
+    // console.log("the name");
+    // console.log(name);
+    // this.props.switchView("ADetail");
+    this.setState({
+      currentArtist: name
+    });
+    // return (
+    // //console.log("from inside return");
+    //  <ArtistDetail name={this.state.currentArtist}/>
+    
+    
+    //  )
+   // const artist = <ArtistDetail name={this.state.currentArtist}/>
+
+    //console.log("the current artist");
+    //console.log(this.state.currentArtist);
+     //this.renderArtistDetail();
+    // this.props.switchView("ADetail");
+
+   // return <ArtistDetail name="francis"/>
+
+  };
 
   componentDidMount() {
     this.getMyTracks();
   }
 
+
+  renderArtistDetail (){
+    this.props.switchView("ADetail");
+    return(
+      <ArtistDetail name="francis"/>
+    )
+    
+  }
+
   render() {
     const songs = this.state.tracks.filter(item => item.track);
-    console.log(songs);
+    const { currentArtist } = this.state;
+    // console.log(songs);
 
     return (
       <div>
         <div className={styles.sticky}>
           <h1 style={{ fontSize: "50px", textAlign: "left" }}>Tracks</h1>
-          <p style={{ fontWeight: 'bold', textAlign: "left" }}>{this.state.total} songs</p>
+          <p style={{ fontWeight: "bold", textAlign: "left" }}>
+            {this.state.total} songs
+          </p>
         </div>
         <div>
           <Table color="teal" inverted celled selectable>
@@ -84,7 +115,9 @@ export class Tracks extends Component {
                     {song.track.name}
                   </TableCell>
                   <TableCell>
-                    <Link onClick={() => this.openArtist(song.track.artists[0].name)}>{song.track.artists[0].name}</Link>
+                    <Link>
+                      {song.track.artists[0].name}
+                    </Link>
                   </TableCell>
                   <TableCell>{song.track.album.name}</TableCell>
                 </TableRow>

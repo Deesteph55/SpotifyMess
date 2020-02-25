@@ -7,7 +7,7 @@ export const ArtistDetail = (props) => {
     return (
         <div>
             <h1> The artist is </h1>
-            <p>{props.name}</p>
+            <h1>{props.name}</h1>
         </div>
     )
 }

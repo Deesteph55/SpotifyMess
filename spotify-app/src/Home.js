@@ -11,13 +11,13 @@ export class Home extends Component {
     this.state = {
       topTracks: [],
       topArtists: [],
-      songsPerPage: 4,
       itemsPerPage: 4,
-      currentPage: 1
+      currentPageA: 1,
+      currentPageT: 1
     };
   }
   getMyTopTracks = () => {
-    spotifyApi.getMyTopTracks({ limit: 50, offset: 0 }).then(response => {
+    spotifyApi.getMyTopTracks({ limit: 50 }).then(response => {
       console.log(response.items);
       this.setState({
         topTracks: response.items
@@ -38,19 +38,28 @@ export class Home extends Component {
     this.getMyTopTracks();
   }
 
-  paginate = pageNumber => {
+  paginateArtist = pageNumber => {
     this.setState({
-      currentPage: pageNumber
-    });
-  };
-  //make home display current posts
-  render() {
-    const { topArtists, topTracks, currentPage, itemsPerPage } = this.state;
+      currentPageA: pageNumber
+    })
+  }
 
-    const indexOfLastPost = currentPage * itemsPerPage;
-    const indexOfFirstPost = indexOfLastPost - itemsPerPage;
-    const currentTracks = topTracks.slice(indexOfFirstPost, indexOfLastPost);
-    const currentArtists = topArtists.slice(indexOfFirstPost, indexOfLastPost);
+  paginateTracks = pageNumber => {
+    this.setState({
+      currentPageT: pageNumber
+    })
+  }
+
+  render() {
+    const { topArtists, topTracks, itemsPerPage, currentPageA, currentPageT} = this.state;
+
+    const indexOfLastTrack = currentPageT * itemsPerPage;
+    const indexOfFirstTrack = indexOfLastTrack - itemsPerPage;
+    const currentTracks = topTracks.slice(indexOfFirstTrack, indexOfLastTrack);
+
+    const indexOfLastArtist = currentPageA * itemsPerPage;
+    const indexOfFirstArtist = indexOfLastArtist - itemsPerPage;
+    const currentArtists = topArtists.slice(indexOfFirstArtist, indexOfLastArtist);
 
     return (
       <div>
@@ -58,33 +67,20 @@ export class Home extends Component {
           <h1 style={{ fontSize: "100px" }}>HOME</h1>
         </div>
 
-        {/* <span style={{ display: "inline", width: '70px', height: '80px', border: '10px solid blue'}}>
-          <p style={{display:"inline", float: 'right', paddingLeft: '200px' }}>sdjkskjksd</p>
-          <p style={{display:"inline-block",float: 'left' }}>djcbjbacjkbb</p>
-          {/* <p>hujajskakask</p> */}
-        {/* <p>jahsknakka</p> */}
-        {/* <p style={{ display: 'inline', float: 'left' }}>   
-            Your Top Songs
-          </p>
-          {/* <Pagination paginate={this.paginate} currentPage={currentPage} /> */}
-        {/* <p style={{display: 'inline', float: 'right', paddingRight:'70px' }}>Testing something</p>  */}
-        {/* </span> */}
-
-        {/* <div> 
-          <p style={{float:'left', paddingLeft: '200px'}}>hello</p> <p style={{float: 'right'}}>there</p>
-         </div> */}
-
-        <p
+        <div className={styles.homeHorizontal}>
+          <p
           style={{
             color: "teal",
             fontWeight: "bold",
-            textAlign: "left",
-            paddingLeft: "60px"
+            marginTop: '14px',
+            marginRight: '1000px',
           }}
         >
           Your Top Songs
         </p>
-        <Pagination paginate={this.paginate} currentPage={currentPage} />
+        <Pagination paginate={this.paginateTracks} totalTracks='50' currentPage={currentPageT} />
+        </div>
+        
 
         <span className={style.album_wrap}>
           {currentTracks.map(track => (
@@ -94,17 +90,21 @@ export class Home extends Component {
             </div>
           ))}
         </span>
-        <p
+
+        <div className={styles.homeHorizontal}>
+          <p
           style={{
             color: "teal",
             fontWeight: "bold",
-            textAlign: "left",
-            paddingLeft: "60px"
+            marginTop: '14px',
+            marginRight: '1000px',
           }}
         >
           Your Top Artists
         </p>
-        <Pagination paginate={this.paginate} currentPage={currentPage} />
+        <Pagination paginate={this.paginateArtist} totalTracks='50' currentPage={currentPageA} />
+        </div>
+        
         <div className={style.artists_wrap}>
           {currentArtists.map(artist => (
             <div key={artist.id} className={style.artist}>

@@ -5,3 +5,5 @@ display inline to get two p tags side by side
 think i get the logic of the nav switch now. switchview says on click, change the currentView state. currentView in dashboard says if currentView is this, make the dashboard this component
 so switchView will change the state and whatever state currentVIEW is, if you AND it with the component it will display that componenet
 i can change view to artistDetail from tracks like i did with the rest. lets see..
+I might have to use redux. Bummer
+process.env variable was undefined because i did npm install dotenv instead of npm install dotenv save

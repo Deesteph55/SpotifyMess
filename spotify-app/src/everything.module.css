@@ -1,3 +1,27 @@
+.compareHorizontal * {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.homeHorizontal * {
+  display: inline-block;
+  border-bottom: 1px grey;
+}
+
+.homeHorizontal p {
+  text-align: left;
+}
+
+
+/* .homeHorizontal {
+  border: 2px solid green;
+} */
+
+/* .compareHorizontal h1 {
+  display: inline-block;
+  margin-left: 10px;
+} */
+
 .gradient {
     /* standard gradient background */
     background: linear-gradient(#41B6B6, #9E41B6);
@@ -5,7 +29,7 @@
     /* clip hackery */
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 300px;
+    font-size: 150px;
   }
 
   .title {

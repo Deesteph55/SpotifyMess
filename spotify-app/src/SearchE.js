@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { SearchEList } from "./SearchEList";
 import SpotifyWebAPI from "spotify-web-api-js";
-import { Container } from "semantic-ui-react";
+import { Icon } from "semantic-ui-react";
+import style from "./Search.module.css"
 const spotifyApi = new SpotifyWebAPI();
+
 
 export class SearchE extends Component {
   constructor(props) {
@@ -59,17 +61,19 @@ export class SearchE extends Component {
   };
 
   render() {
-    const unit = document.getElementById("form");
     return (
       <div>
-        <div style={{ marginTop:'10px', marginLeft: '10px', float:'left' }}>
+        <div >
+          <form className={style.search}>
           <input
             value={this.state.query}
             onChange={e => this.handleOnInputChange(e)}
             placeholder="Search"
             name="form"
-            align = 'left'
           />
+          <Icon name='search' color='teal' className={style.searchIcon}/>
+          </form>
+          
         </div>
         <div >
           {this.state.query.length > 0 ? (
