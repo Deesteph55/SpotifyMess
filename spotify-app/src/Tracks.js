@@ -29,7 +29,6 @@ export class Tracks extends Component {
       tracks: [],
       total: 0,
       artistName: "",
-      currentArtist: "lala"
     };
   }
 
@@ -43,41 +42,12 @@ export class Tracks extends Component {
   };
 
   openArtist = name => {
-    //alert("clicking is working")
-    // console.log("the name");
-    // console.log(name);
-    // this.props.switchView("ADetail");
-    this.setState({
-      currentArtist: name
-    });
-    // return (
-    // //console.log("from inside return");
-    //  <ArtistDetail name={this.state.currentArtist}/>
-    
-    
-    //  )
-   // const artist = <ArtistDetail name={this.state.currentArtist}/>
-
-    //console.log("the current artist");
-    //console.log(this.state.currentArtist);
-     //this.renderArtistDetail();
-    // this.props.switchView("ADetail");
-
-   // return <ArtistDetail name="francis"/>
-
+     this.props.setCurrentArtist(name);
+     this.props.switchView("ADetail");
   };
 
   componentDidMount() {
     this.getMyTracks();
-  }
-
-
-  renderArtistDetail (){
-    this.props.switchView("ADetail");
-    return(
-      <ArtistDetail name="francis"/>
-    )
-    
   }
 
   render() {
@@ -94,7 +64,7 @@ export class Tracks extends Component {
           </p>
         </div>
         <div>
-          <Table color="teal" inverted celled selectable>
+          <Table color="teal" celled selectable style={{background: 'none'}}>
             <Table.Header>
               <TableRow>
                 <Table.HeaderCell>Title</Table.HeaderCell>
@@ -115,7 +85,9 @@ export class Tracks extends Component {
                     {song.track.name}
                   </TableCell>
                   <TableCell>
-                    <Link>
+                    <Link onClick={() => {
+                      this.openArtist(song.track.artists[0].name);
+                    }}>
                       {song.track.artists[0].name}
                     </Link>
                   </TableCell>

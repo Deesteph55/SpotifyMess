@@ -4,7 +4,9 @@ import SpotifyWebAPI from "spotify-web-api-js";
 import { Button } from "semantic-ui-react";
 import { Navbar } from "./Navbar";
 import { Dashboard } from "./Dashboard";
-//NAME OF THIS APP IS DENS
+import { Album } from "./Album";
+import style from "./everything.module.css";
+
 const spotifyApi = new SpotifyWebAPI();
 var token;
 var rtoken;
@@ -63,27 +65,44 @@ class App extends Component {
         ) : null}
 
         {this.state.loggedIn ? (
-          <div>
-            <div>
+          // <div  id="outer div" >put padding 0 100px on this
+          <div id="outer div" >
+            <div id="app nav div">
               <Navbar switchView={this.switchView} />
             </div>
 
             <div
               style={{
                 //marginTop: "100px",
-                marginLeft: "15.05em",
+                marginLeft: "15rem",
                 //paddingLeft: '17em',
                 //border: 'solid red 5px',
                 //paddingRight: "17em",
-                marginRight: "0px"
-
-                //backgroundColor: 'grey'
+                marginRight: "0px",
+                height: '800px',
+                overflow: 'auto'
               }}
+               className={style.background}
+              id="app dashboard div"
             >
-              <Dashboard currentView={currentView} switchView={this.switchView} />
+              <Dashboard
+                currentView={currentView}
+                switchView={this.switchView}
+              />
+              {/* <Album/> */}
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div>
+            You are not logged in.
+            <a href="/login">
+              <Button inverted color="red">
+                {" "}
+                Login to Spotify
+              </Button>
+            </a>
+          </div>
+        )}
         {/* //null should be windows.location saying you are not logged in  */}
       </div>
     );

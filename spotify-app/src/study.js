@@ -119,8 +119,35 @@ class TodoApp extends React.Component {
     }
   }
 
+//this worked
 
-  ReactDOM.render(
-    <TodoApp />,
-    document.getElementById('app')
+  const [albumTracks, setAlbumTracks] = useState([]);
+
+  useEffect(() => {
+    const getAlbumTracks = id => {
+      spotifyApi.getAlbumTracks(id).then(response => {
+        let names = [];
+        response.items.forEach(item => {
+            names.push(item.name);
+        })
+        console.log("names");
+        console.log(names);
+        setAlbumTracks(names);
+        console.log("albumtracsk")
+        console.log(albumTracks);      
+      });
+    };
+    getAlbumTracks(id);
+  }, [id, setAlbumTracks]);
+
+  return (
+    <div>
+      <h1>the song is </h1>
+      <h1>{id}</h1>
+      <ul>
+      {albumTracks.map(post => (
+        <li>{post}</li>
+      ))}
+    </ul>
+    </div>
   );

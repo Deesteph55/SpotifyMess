@@ -18,7 +18,6 @@ export class Home extends Component {
   }
   getMyTopTracks = () => {
     spotifyApi.getMyTopTracks({ limit: 50 }).then(response => {
-      console.log(response.items);
       this.setState({
         topTracks: response.items
       });
@@ -41,17 +40,33 @@ export class Home extends Component {
   paginateArtist = pageNumber => {
     this.setState({
       currentPageA: pageNumber
-    })
-  }
+    });
+  };
 
   paginateTracks = pageNumber => {
     this.setState({
       currentPageT: pageNumber
-    })
+    });
+  };
+
+  openArtist = name => {
+    this.props.setCurrentArtist(name);
+    this.props.switchView("ADetail");
+  };
+
+  openAlbum = id => {
+    this.props.setCurrentAlbum(id);
+    this.props.switchView("AlbumDetail");
   }
 
   render() {
-    const { topArtists, topTracks, itemsPerPage, currentPageA, currentPageT} = this.state;
+    const {
+      topArtists,
+      topTracks,
+      itemsPerPage,
+      currentPageA,
+      currentPageT
+    } = this.state;
 
     const indexOfLastTrack = currentPageT * itemsPerPage;
     const indexOfFirstTrack = indexOfLastTrack - itemsPerPage;
@@ -59,7 +74,10 @@ export class Home extends Component {
 
     const indexOfLastArtist = currentPageA * itemsPerPage;
     const indexOfFirstArtist = indexOfLastArtist - itemsPerPage;
-    const currentArtists = topArtists.slice(indexOfFirstArtist, indexOfLastArtist);
+    const currentArtists = topArtists.slice(
+      indexOfFirstArtist,
+      indexOfLastArtist
+    );
 
     return (
       <div>
@@ -69,47 +87,67 @@ export class Home extends Component {
 
         <div className={styles.homeHorizontal}>
           <p
-          style={{
-            color: "teal",
-            fontWeight: "bold",
-            marginTop: '14px',
-            marginRight: '1000px',
-          }}
-        >
-          Your Top Songs
-        </p>
-        <Pagination paginate={this.paginateTracks} totalTracks='50' currentPage={currentPageT} />
+            style={{
+              color: "teal",
+              fontWeight: "bold",
+              marginTop: "14px",
+              marginRight: "1000px"
+            }}
+          >
+            Your Top Songs
+          </p>
+          <Pagination
+            paginate={this.paginateTracks}
+            totalTracks="50"
+            currentPage={currentPageT}
+          />
         </div>
-        
 
         <span className={style.album_wrap}>
           {currentTracks.map(track => (
             <div key={track.id} className={style.album}>
+              <a onClick={() => {
+                  this.openAlbum(track.album.id)
+                }}>
               <img src={track.album.images[0].url} />
-              <p>{track.name}</p>
+              <p>
+                <b>{track.name}</b>
+              </p>
+              </a>
             </div>
           ))}
         </span>
 
         <div className={styles.homeHorizontal}>
           <p
-          style={{
-            color: "teal",
-            fontWeight: "bold",
-            marginTop: '14px',
-            marginRight: '1000px',
-          }}
-        >
-          Your Top Artists
-        </p>
-        <Pagination paginate={this.paginateArtist} totalTracks='50' currentPage={currentPageA} />
+            style={{
+              color: "teal",
+              fontWeight: "bold",
+              marginTop: "14px",
+              marginRight: "1000px"
+            }}
+          >
+            Your Top Artists
+          </p>
+          <Pagination
+            paginate={this.paginateArtist}
+            totalTracks="50"
+            currentPage={currentPageA}
+          />
         </div>
-        
+
         <div className={style.artists_wrap}>
           {currentArtists.map(artist => (
             <div key={artist.id} className={style.artist}>
+              <a onClick={() => {
+                  this.openArtist(artist.name)
+                }}>
               <img src={artist.images[0].url} />
-              <p>{artist.name}</p>
+              <p>
+                <b>{artist.name}</b>
+                
+              </p>
+              </a>
             </div>
           ))}
         </div>

@@ -3,9 +3,9 @@ import { Menu, Container, Button, Header, Icon } from "semantic-ui-react";
 
 export const Navbar = ({ switchView }) => {
   return (
-    <Menu fixed="left" inverted vertical>
-      <Container>
-        <Header as="h1" color='teal' centered style={{marginTop: '10px', marginLeft: '25px'}}>
+    <Menu fixed="left" inverted vertical id="component nav menu">
+      
+        <Header as="h1" centered style={{marginTop: '10px', marginLeft: '25px', color: '#faaca8'}}>
           <Icon name="music" />
           <Header.Content>DENS</Header.Content>
         </Header>
@@ -21,7 +21,11 @@ export const Navbar = ({ switchView }) => {
         <Menu.Item>
           <Button onClick={() => switchView("Popular")} content="Popular" />
         </Menu.Item>
-      </Container>
+
+        <Menu.Item>
+          Made by *********
+          put something in here that shows who is logged in. user profile on spotify api
+        </Menu.Item>
     </Menu>
   );
 };

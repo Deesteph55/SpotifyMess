@@ -63,7 +63,6 @@ export class SearchE extends Component {
   render() {
     return (
       <div>
-        <div >
           <form className={style.search}>
           <input
             value={this.state.query}
@@ -73,9 +72,7 @@ export class SearchE extends Component {
           />
           <Icon name='search' color='teal' className={style.searchIcon}/>
           </form>
-          
-        </div>
-        <div >
+
           {this.state.query.length > 0 ? (
           <SearchEList
             track={this.state.trackR}
@@ -84,7 +81,6 @@ export class SearchE extends Component {
             playlist={this.state.playlistR}
           />
         ) : null}
-        </div>
         
       </div>
     );
