@@ -66,7 +66,7 @@ class App extends Component {
 
         {this.state.loggedIn ? (
           // <div  id="outer div" >put padding 0 100px on this
-          <div id="outer div" >
+          <div id="outer div">
             <div id="app nav div">
               <Navbar switchView={this.switchView} />
             </div>
@@ -79,10 +79,10 @@ class App extends Component {
                 //border: 'solid red 5px',
                 //paddingRight: "17em",
                 marginRight: "0px",
-                height: '800px',
-                overflow: 'auto'
+                height: "800px",
+                overflow: "auto"
               }}
-               className={style.background}
+              className={style.background}
               id="app dashboard div"
             >
               <Dashboard
@@ -92,17 +92,7 @@ class App extends Component {
               {/* <Album/> */}
             </div>
           </div>
-        ) : (
-          <div>
-            You are not logged in.
-            <a href="/login">
-              <Button inverted color="red">
-                {" "}
-                Login to Spotify
-              </Button>
-            </a>
-          </div>
-        )}
+        ) : null}
         {/* //null should be windows.location saying you are not logged in  */}
       </div>
     );
