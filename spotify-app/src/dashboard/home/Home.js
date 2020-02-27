@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import SpotifyWebAPI from "spotify-web-api-js";
-import styles from "./everything.module.css";
-import { Pagination } from "./Pagination";
+import { Pagination } from "../../Pagination";
 import style from "./Home.module.css";
+import { SearchE } from "../search/SearchE";
+import { Icon } from "semantic-ui-react";
 const spotifyApi = new SpotifyWebAPI();
 
 export class Home extends Component {
@@ -57,7 +58,7 @@ export class Home extends Component {
   openAlbum = id => {
     this.props.setCurrentAlbum(id);
     this.props.switchView("AlbumDetail");
-  }
+  };
 
   render() {
     const {
@@ -81,11 +82,12 @@ export class Home extends Component {
 
     return (
       <div>
-        <div className={styles.home}>
+
+        <div className={style.home}>
           <h1 style={{ fontSize: "100px" }}>HOME</h1>
         </div>
 
-        <div className={styles.homeHorizontal}>
+        <div className={style.homeHorizontal}>
           <p
             style={{
               color: "teal",
@@ -106,19 +108,21 @@ export class Home extends Component {
         <span className={style.album_wrap}>
           {currentTracks.map(track => (
             <div key={track.id} className={style.album}>
-              <a onClick={() => {
-                  this.openAlbum(track.album.id)
-                }}>
-              <img src={track.album.images[0].url} />
-              <p>
-                <b>{track.name}</b>
-              </p>
+              <a
+                onClick={() => {
+                  this.openAlbum(track.album.id);
+                }}
+              >
+                <img src={track.album.images[0].url} />
+                <p>
+                  <b>{track.name}</b>
+                </p>
               </a>
             </div>
           ))}
         </span>
 
-        <div className={styles.homeHorizontal}>
+        <div className={style.homeHorizontal}>
           <p
             style={{
               color: "teal",
@@ -139,14 +143,15 @@ export class Home extends Component {
         <div className={style.artists_wrap}>
           {currentArtists.map(artist => (
             <div key={artist.id} className={style.artist}>
-              <a onClick={() => {
-                  this.openArtist(artist.name)
-                }}>
-              <img src={artist.images[0].url} />
-              <p>
-                <b>{artist.name}</b>
-                
-              </p>
+              <a
+                onClick={() => {
+                  this.openArtist(artist.name);
+                }}
+              >
+                <img src={artist.images[0].url} />
+                <p>
+                  <b>{artist.name}</b>
+                </p>
               </a>
             </div>
           ))}

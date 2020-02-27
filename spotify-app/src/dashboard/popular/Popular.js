@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Grid, Image, Container, Button } from "semantic-ui-react";
 import SpotifyWebAPI from "spotify-web-api-js";
 import { Suggestions } from "./Suggestions";
-import { Compare } from "./Compare";
+import { Compare } from "../compare/Compare";
+import style from "./Popular.module.css";
 const spotifyApi = new SpotifyWebAPI();
 /*You're gonna be popular as some kind of backgroynd*/
 
@@ -91,11 +92,11 @@ export class Popular extends Component {
         </div>
         <Grid columns={2} padded>
           <Grid.Column>
-            <form>
+            <form className={style.field}>
               <input
                 value={this.state.queryOne}
                 onChange={this.handleInputOneChange}
-                placeholder="Artist 1"
+                placeholder="Artist 1 ... click on a name"
               />
               {this.state.queryOne.length < 1 ? null : (
                 <Suggestions
@@ -104,13 +105,16 @@ export class Popular extends Component {
                 />
               )}
             </form>
+            {this.state.nameOne != "" ? (
+              <p>Artist 1: {this.state.nameOne} </p>
+            ) : null}
           </Grid.Column>
           <Grid.Column>
-            <form>
+            <form className={style.field}>
               <input
                 value={this.state.queryTwo}
                 onChange={this.handleInputTwoChange}
-                placeholder="Artist 2"
+                placeholder="Artist 2 ... click on a name"
               />
               {this.state.queryTwo.length < 1 ? null : (
                 <Suggestions
@@ -119,15 +123,11 @@ export class Popular extends Component {
                 />
               )}
             </form>
+            {this.state.nameTwo != "" ? (
+            <p>Artist 2: {this.state.nameTwo} </p>
+          ) : null}
           </Grid.Column>
         </Grid>
-        {this.state.nameOne != "" ? (
-          <p>Artist 1: {this.state.nameOne} </p>
-        ) : null}
-
-        {this.state.nameTwo != "" ? (
-          <p>Artist 2: {this.state.nameTwo} </p>
-        ) : null}
 
         {this.state.popularityTwo != 0 ? (
           <Compare

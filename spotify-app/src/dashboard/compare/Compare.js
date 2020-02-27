@@ -1,11 +1,7 @@
 import React from "react";
-import styles from "./everything.module.css";
+import styles from "./Compare.module.css";
 
 export const Compare = ({ pop1, pop2, name1, name2 }) => {
-  const divStyle ={
-
-  }
-  
   return (
     <div>
       {pop1 > pop2 ? (

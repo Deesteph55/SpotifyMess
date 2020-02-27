@@ -1,0 +1,19 @@
+.compareHorizontal * {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.gradient {
+    /* standard gradient background */
+    /* background: linear-gradient(#41b6b6, #9e41b6);
+  
+    /* clip hackery 
+    background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    color: #555;
+    font-size: 150px;
+}
+
+.title {
+    color: blueviolet;
+  }

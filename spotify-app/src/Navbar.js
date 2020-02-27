@@ -24,7 +24,6 @@ export const Navbar = ({ switchView }) => {
 
         <Menu.Item>
           Made by *********
-          put something in here that shows who is logged in. user profile on spotify api
         </Menu.Item>
     </Menu>
   );

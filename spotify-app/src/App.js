@@ -4,7 +4,6 @@ import SpotifyWebAPI from "spotify-web-api-js";
 import { Button } from "semantic-ui-react";
 import { Navbar } from "./Navbar";
 import { Dashboard } from "./Dashboard";
-import { Album } from "./Album";
 import style from "./everything.module.css";
 
 const spotifyApi = new SpotifyWebAPI();

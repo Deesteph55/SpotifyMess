@@ -70,7 +70,7 @@ export class SearchE extends Component {
             placeholder="Search"
             name="form"
           />
-          <Icon name='search' color='teal' className={style.searchIcon}/>
+          {/* <Icon name='search' color='teal' className={style.searchIcon}/> */}
           </form>
 
           {this.state.query.length > 0 ? (

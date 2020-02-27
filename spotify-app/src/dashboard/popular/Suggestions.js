@@ -8,9 +8,11 @@ export const Suggestions = ({ results, getPop }) => {
   }
 
   var options = results.map(unit => (
-    <li onClick={() => clickAndDump(unit.popularity, unit.name)} key={unit.id}>
+    <ul style={{listStyle: 'none'}}>
+    <li onClick={() => clickAndDump(unit.popularity, unit.name)} key={unit.id} style={{cursor: 'pointer', paddingBottom: '10px'}}>
       {unit.name}
     </li>
+    </ul>
   ));
 
   return <ul>{options}</ul>;

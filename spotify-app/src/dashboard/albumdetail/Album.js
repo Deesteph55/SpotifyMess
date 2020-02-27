@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { List, Segment } from "semantic-ui-react";
 import SpotifyWebAPI from "spotify-web-api-js";
+import { SearchE } from "../search/SearchE";
 const spotifyApi = new SpotifyWebAPI();
 
 export const Album = ({ id }) => {

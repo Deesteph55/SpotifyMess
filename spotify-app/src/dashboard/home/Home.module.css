@@ -1,3 +1,21 @@
+.home {
+  /* background: linear-gradient(#41b6b6, #9e41b6);
+
+  /* clip hackery */
+  /* background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  font-size: 150px;
+  color: black;
+}
+
+.homeHorizontal * {
+  display: inline-block;
+  border-bottom: 1px grey;
+}
+
+.homeHorizontal p {
+  text-align: left;
+}
 
 .artists_wrap {
   display: flex;

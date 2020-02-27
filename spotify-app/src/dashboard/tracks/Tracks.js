@@ -10,17 +10,10 @@ import {
   TableBody,
   TableCell
 } from "semantic-ui-react";
-import styles from "./everything.module.css";
+import styles from "./Track.module.css";
 import { Link } from "@material-ui/core";
-import { ArtistDetail } from "./ArtistDetail";
-import {Dashboard} from './Dashboard';
 
 const spotifyApi = new SpotifyWebAPI();
-
-// const script = document.createElement("script");
-// script.src = "https://d23jutsnau9x47.cloudfront.net/back/v1.0.8/viewer.js";
-// script.async = true;
-// document.body.appendChild(script);
 
 export class Tracks extends Component {
   constructor(props) {

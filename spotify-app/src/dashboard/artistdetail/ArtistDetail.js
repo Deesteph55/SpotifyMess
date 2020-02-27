@@ -1,5 +1,6 @@
 import React from "react";
-import style from './everything.module.css'
+import style from './ArtistDetail.module.css'
+import { SearchE } from "../search/SearchE";
 
 export const ArtistDetail = props => {
   console.log("the prop name");

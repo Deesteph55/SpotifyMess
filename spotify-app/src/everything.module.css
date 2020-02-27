@@ -1,29 +1,22 @@
-.compareHorizontal * {
-  display: inline-block;
-  margin-left: 10px;
-}
-
-.homeHorizontal * {
-  display: inline-block;
-  border-bottom: 1px grey;
-}
-
-.homeHorizontal p {
-  text-align: left;
-}
 
 .outerdiv {
-  overflow: auto;
+  overflow-y: hidden;
 }
 
-.artistH * {
+.innerdash {
+  overflow-y: scroll;
+}
+
+.search * {
   display: inline-block;
 }
 
+.innerdash::-webkit-scrollbar { 
+  display: none; 
+} 
 .background {
   background-color: #faaca8;
   background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
-
 
   /* background-color: #007070;
   background-image: linear-gradient(
@@ -51,35 +44,12 @@
   margin-left: 10px;
 } */
 
-.every  {
+.every {
   /* background-color: black; */
   padding: 0px 100px;
   margin-left: 15rem;
-} 
-
-.gradient {
-  /* standard gradient background */
-  background: linear-gradient(#41b6b6, #9e41b6);
-
-  /* clip hackery */
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 150px;
 }
 
-.title {
-  color: blueviolet;
-}
-
-.home {
-  /* background: linear-gradient(#41b6b6, #9e41b6);
-
-  /* clip hackery */
- /* background-clip: text;
-  -webkit-text-fill-color: transparent; */
-  font-size: 150px;
-  color: black;
-}
 
 /* Style the header */
 .header {
@@ -89,13 +59,4 @@
 }
 
 /* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  /* background: linear-gradient(#41B6B6, #9E41B6);
-    background-clip: text;
-    -webkit-text-fill-color: black;
-    font-size: 150px;  */
-  z-index: 22;
-}
+

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Playing } from "./Playing";
-import { Tracks } from "./Tracks";
-import { Popular } from "./Popular";
-import { SearchE } from "./SearchE";
-import { Home } from "./Home";
-import { ArtistDetail } from "./ArtistDetail";
-import style from "./everything.module.css";
+import { Tracks } from "./dashboard/tracks/Tracks";
+import { Popular } from "./dashboard/popular/Popular";
+import { SearchE } from "./dashboard/search/SearchE";
+import { Home } from "./dashboard/home/Home";
+import { ArtistDetail } from "./dashboard/artistdetail/ArtistDetail";
 import SpotifyWebAPI from "spotify-web-api-js";
 import { Icon } from "semantic-ui-react";
-import { Album } from "./Album";
+import { Album } from "./dashboard/albumdetail/Album";
 
 const spotifyApi = new SpotifyWebAPI();
 
@@ -32,13 +30,17 @@ export const Dashboard = ({ currentView, switchView }) => {
 
   return (
     <div id="component dashboard div">
-      <Icon name="user circle outline" />
-      {currentUser}
+      <div>
+        <Icon name="user circle outline" />
+        {currentUser} 
+      </div>
+      
       {currentView == "Home" && (
         <Home
           switchView={switchView}
           setCurrentArtist={setCurrentArtist}
           setCurrentAlbum={setCurrentAlbum}
+          currentUser={currentUser}
         />
       )}
       {currentView == "Tracks" && (
@@ -46,12 +48,13 @@ export const Dashboard = ({ currentView, switchView }) => {
           switchView={switchView}
           setCurrentArtist={setCurrentArtist}
           setCurrentAlbum={setCurrentAlbum}
+          currentUser={currentUser}
         />
       )}
       {currentView == "SearchE" && <SearchE />}
-      {currentView == "Popular" && <Popular />}
-      {currentView == "ADetail" && <ArtistDetail name={currentArtist} />}
-      {currentView === "AlbumDetail" && <Album id={currentAlbum}/>}
+      {currentView == "Popular" && <Popular currentUser={currentUser}/>}
+      {currentView == "ADetail" && <ArtistDetail name={currentArtist} currentUser={currentUser}/>}
+      {currentView === "AlbumDetail" && <Album id={currentAlbum} currentUser={currentUser}/>}
      
     </div>
   );
