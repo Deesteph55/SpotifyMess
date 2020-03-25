@@ -6,6 +6,7 @@ body {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 .App-logo {
   height: 40vmin;
@@ -14,10 +15,6 @@ body {
 * {
   box-sizing: border-box;
 }
-/* .every * {
-  box-sizing: border-box;
-  background-color: black;
-} */
 
 .App-header {
   background-color: #282c34;
@@ -34,6 +31,6 @@ body {
   color: #09d3ac;
 }
 
-div, button {
+/* div, button {
   margin: 0px
-}
+} */

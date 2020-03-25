@@ -1,3 +1,70 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.flex_parent {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.flex_parent p {
+  padding-right: 20px;
+}
+
+.section {
+  border: 1px solid red;
+}
+
+.section_header  {
+  width: 100%;
+} 
+
+.child {
+  width: 50%;
+  align-self: flex-start;
+}
+.child img {
+  float: left;
+}
+
+.child:nth-last-child(n+3) { 
+  margin-bottom: 10px;
+}
+
+.card {
+  height: 114px;
+}
+
+.card:hover {
+  height: 114px;
+  opacity: 0.5;
+}
+
+.card_artist {
+  height: 114px;
+}
+
+.card_artist:hover {
+  height: 114px;
+  opacity: 0.5;
+}
+
+
+.card_artist img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+}
+
 .search {
   width: 200px;
   height: 40px;

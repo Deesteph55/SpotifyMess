@@ -21,7 +21,7 @@ export class Tracks extends Component {
     this.state = {
       tracks: [],
       total: 0,
-      artistName: "",
+      artistName: ""
     };
   }
 
@@ -34,9 +34,9 @@ export class Tracks extends Component {
     });
   };
 
-  openArtist = name => {
-     this.props.setCurrentArtist(name);
-     this.props.switchView("ADetail");
+  openArtist = id => {
+    this.props.setCurrentArtist(id);
+    this.props.switchView("ADetail");
   };
 
   componentDidMount() {
@@ -52,12 +52,25 @@ export class Tracks extends Component {
       <div>
         <div className={styles.sticky}>
           <h1 style={{ fontSize: "50px", textAlign: "left" }}>Tracks</h1>
-          <p style={{ fontWeight: "bold", textAlign: "left" }}>
+          <p
+            style={{
+              fontWeight: "bold",
+              textAlign: "left",
+              paddingBottom: "20px"
+            }}
+          >
             {this.state.total} songs
           </p>
         </div>
+
         <div>
-          <Table color="teal" celled selectable style={{background: 'none'}}>
+          <Table
+            singleLine
+            fixed
+            basic="very"
+            selectable
+            style={{ background: "none" }}
+          >
             <Table.Header>
               <TableRow>
                 <Table.HeaderCell>Title</Table.HeaderCell>
@@ -69,26 +82,45 @@ export class Tracks extends Component {
             <TableBody>
               {songs.map(song => (
                 <TableRow key={song.track.id}>
-                  <TableCell>
-                    <Image
-                      src={song.track.album.images[0].url}
-                      rounded
-                      size="mini"
-                    />{" "}
-                    {song.track.name}
+                  <TableCell className={styles.row}>
+                    <div className={styles.column}>
+                      <Image
+                        src={song.track.album.images[0].url}
+                        rounded
+                        size="mini"
+                      />
+                    </div>
+                    <div className={styles.column}>
+                      <p>{song.track.name} </p>
+                    </div>
                   </TableCell>
                   <TableCell>
-                    <Link onClick={() => {
-                      this.openArtist(song.track.artists[0].name);
-                    }}>
-                      {song.track.artists[0].name}
-                    </Link>
+                    {
+                      song.track.artists
+                        .map((unit, index) => [
+                          index > 0 && ', ',
+                          <Link
+                            onClick={() => {
+                              this.openArtist(unit.id);
+                            }}
+                          >
+                            {" "}
+                            {unit.name}
+                          </Link>
+                          // unit.name
+                          ])
+      
+                    }
+                  
                   </TableCell>
                   <TableCell>{song.track.album.name}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
+          chahahahah
+          cahahhaha
+          caahahah
         </div>
       </div>
     );

@@ -1,3 +1,118 @@
-.artistH * {
-    display: inline-block;
+.popular {
+  height: 400px;
+  width: 70%;
+  overflow: auto;
+  /* border: 2px solid black; */
+  background-image: linear-gradient(0deg, #FAACA8 0%, #808080 100%);
+}
+.fans {
+  height: 400px;
+  width: 30%;
+  overflow: auto;
+  /* border: 2px solid black; */
+  background-image: linear-gradient(0deg, #FAACA8 0%, #808080 100%);
+}
+
+.artistH {
+  display: flex;
+  flex-direction: row;
+  /* width: 30%; */
+}
+
+/* .alike {
+  display: flex;
+  align-items: center;
+  /* width: 100%; 
+  background: green;
+  border-bottom: 2px solid yellow;
+  padding-top: 10px;
+  padding-bottom: 10px;
+} */
+
+
+.album_wrap {
+  display: flex;
+  padding: 16px;
+  flex-wrap: wrap;
+}
+
+.background {
+  background-color: #e9bbee;
+  background-image: linear-gradient(19deg, #e9bbee 0%, #8a8792 100%);
+}
+
+ .alike {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.pop {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+.alike p {
+  margin-left: 15px;
+}
+
+.album img {
+  width: 240px;
+  height: 240px;
+}
+
+.album img:hover {
+  opacity: 0.5;
+  width: 240px;
+  height: 240px;
+}
+
+.album {
+  flex: 25%;
+  width: 280px;
+  vertical-align: top;
+  text-align: center;
+}
+
+.album_wrap p {
+  padding-top: 6px;
+  padding-bottom: 30px;
+}
+
+/* .pixelated {
+  background-size: 400px 400px;
+  background-repeat: no-repeat;
+  image-rendering: auto;
+  background-position: left center;
+  background-color: black;
+  text-align: right;
+  padding-right: 20px;
+  height: 400px;
+}
+
+.pixelated h1 {
+  font-size: 130px;
+  color: white;
+} */
+
+.pixelated {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+}
+.pixelated img  {
+  height: 400px;
+  width: 400px;
+}
+
+.pixelated h1 {
+  font-size: 130px;
+} 
+
+.pixelated h1, h3 {
+  color: white;
+  margin-left: 100px;
 }

@@ -50,8 +50,8 @@ export class Home extends Component {
     });
   };
 
-  openArtist = name => {
-    this.props.setCurrentArtist(name);
+  openArtist = id => {
+    this.props.setCurrentArtist(id);
     this.props.switchView("ADetail");
   };
 
@@ -92,7 +92,7 @@ export class Home extends Component {
             style={{
               color: "teal",
               fontWeight: "bold",
-              marginTop: "14px",
+            //  marginTop: "14px",
               marginRight: "1000px"
             }}
           >
@@ -100,7 +100,7 @@ export class Home extends Component {
           </p>
           <Pagination
             paginate={this.paginateTracks}
-            totalTracks="50"
+            total="50"
             currentPage={currentPageT}
           />
         </div>
@@ -135,7 +135,7 @@ export class Home extends Component {
           </p>
           <Pagination
             paginate={this.paginateArtist}
-            totalTracks="50"
+            total="50"
             currentPage={currentPageA}
           />
         </div>
@@ -145,7 +145,7 @@ export class Home extends Component {
             <div key={artist.id} className={style.artist}>
               <a
                 onClick={() => {
-                  this.openArtist(artist.name);
+                  this.openArtist(artist.id);
                 }}
               >
                 <img src={artist.images[0].url} />

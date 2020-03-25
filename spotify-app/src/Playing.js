@@ -29,11 +29,11 @@ export class Playing extends Component {
     var player = this.state.nowPlaying;
     return (
       <div>
-        <div>Now playing: {player.name}</div>
+        {/* <div>Now playing: {player.name}</div>
         <div>
           <img src={player.image} style={{ width: 100 }} alt={"song pic"} />
         </div>
-        <button onClick={this.getNowPlaying}>Check Now Playing</button>
+        <button onClick={this.getNowPlaying}>Check Now Playing</button> */}
       </div>
     );
   }

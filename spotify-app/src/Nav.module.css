@@ -1,0 +1,50 @@
+/* .sidebar {
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: black;
+     position: fixed; 
+    height: 100vh;
+    overflow: auto;
+    float: left;
+} */
+
+/* .sidebar {
+  /* width: 15%;
+  height: calc(100vh - 6em);
+  overflow-y: auto; 
+  background-color: black;
+} */
+
+.sidebar li {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+}
+.sidebar li:hover {
+    font-weight: bold;
+}
+
+/* .sidebar li:hover:not(.active) {
+    /* color: black;
+    background-color: pink; 
+    font-weight: normal;
+} */
+
+
+@media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar li {float: left;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar li {
+      text-align: center;
+      float: none;
+    }
+  }

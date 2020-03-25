@@ -7,13 +7,68 @@
   overflow-y: scroll;
 }
 
-.search * {
-  display: inline-block;
-}
-
 .innerdash::-webkit-scrollbar { 
   display: none; 
 } 
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+/* .dash {
+  float: left;
+  width: 85%;
+  height: 100vh;
+  padding: 0px 50px;
+  overflow: auto;
+} */
+
+.nav {
+  width: 15%;
+  height: calc(100vh - 6em);
+  overflow-y: auto;
+  /* background-color: black; */
+  background-image: linear-gradient(19deg, #b9bebf 0%, #d4ccd8 100%);
+  text-align: center;
+}
+
+.dash {
+  width: 85%;
+  padding: 0 10px;
+  background: purple;
+  height: calc(100vh - 6.5em);
+  overflow: auto;
+  /* border: 2px solid lawngreen; */
+}
+
+.footer {
+  font-size: 100px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+   color: black;
+  height: 1em;
+  text-align: center;
+  /* background: black; */
+
+  /* background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%); */
+  /* background-image: linear-gradient(0deg, #FAACA8 0%, #37363b 100%); */
+  /* background-image: linear-gradient(180deg, #FAACA8 0%, #FAACAB 100%); */
+  /* background-image: linear-gradient(90deg, #FAACA8 1%, #ecb2b2 44%); */
+  background-image: linear-gradient(90deg, #F5CCCC 1%, #f5cccc 44%);
+
+
+
+
+}
+
+@media screen and (max-width:700px) {
+  /* For mobile phones: */
+  .dash {
+    width:100%;
+  }
+}
 .background {
   background-color: #faaca8;
   background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
@@ -35,14 +90,6 @@
   ); */
 }
 
-/* .homeHorizontal {
-  border: 2px solid green;
-} */
-
-/* .compareHorizontal h1 {
-  display: inline-block;
-  margin-left: 10px;
-} */
 
 .every {
   /* background-color: black; */

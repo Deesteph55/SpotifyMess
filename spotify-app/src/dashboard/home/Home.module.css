@@ -8,13 +8,16 @@
   color: black;
 }
 
-.homeHorizontal * {
+/* .homeHorizontal * {
   display: inline-block;
   border-bottom: 1px grey;
-}
+  vertical-align: top;
+} */
 
-.homeHorizontal p {
-  text-align: left;
+.homeHorizontal {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .artists_wrap {
@@ -82,4 +85,50 @@
 .album_wrap p {
   padding-top: 6px;
   padding-bottom: 30px;
+}
+
+@media screen and (max-width: 700px) {
+  /* For mobile phones: */
+
+  .artists_wrap {
+    display: flex;
+    padding: 16px;
+    width: 100%;
+    flex-direction: column;
+  }
+  .homeHorizontal {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+
+  /* .artist img {
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;
+  }
+
+  .artist img:hover {
+    opacity: 0.5;
+    border-radius: 50%;
+    width: 240px;
+    height: 240px;
+  }
+
+  .artist a {
+    color: black;
+    cursor: pointer;
+  }
+  .artist {
+    flex: 25%;
+    width: 280px;
+    vertical-align: top;
+    text-align: center;
+  }
+
+  .artists_wrap p {
+    padding-top: 6px;
+    padding-bottom: 30px;
+  } */
 }

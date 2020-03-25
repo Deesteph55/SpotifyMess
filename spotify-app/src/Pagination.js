@@ -1,13 +1,7 @@
 import React from "react";
 
-export const Pagination = ({ paginate, totalTracks, currentPage }) => {
-  const btnStyle = {
-    background: "none !important",
-    border: "none",
-    cursor: "pointer"
-  };
+export const Pagination = ({ paginate, total, currentPage }) => {
   var prevSign = "<";
-  var nextSign = ">";
   let prevBtn = null;
   if (currentPage == 1) {
     prevBtn = (
@@ -38,7 +32,7 @@ export const Pagination = ({ paginate, totalTracks, currentPage }) => {
       </button>
     );
   }
-  let lastPage = Math.ceil(parseFloat(totalTracks / 4));
+  let lastPage = Math.ceil(parseFloat(total / 4));
   let nxtBtn = null;
   if (currentPage == lastPage) {
     nxtBtn = (

@@ -1,0 +1,18 @@
+.playlist_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 25px;
+}
+
+.div {
+    width: 70px;
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 30px;
+    vertical-align: top;
+    flex: 50%;
+}
+
+.div p:hover {
+    text-decoration: underline;
+}

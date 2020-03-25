@@ -55,6 +55,7 @@ export const Album = ({ id }) => {
             <li key ={track.id} style={{borderBottom:'1px solid black', padding: '10px'}}> {track.name}</li>
         ))}
       </ol>
+
     </div>
   );
 };

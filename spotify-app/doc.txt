@@ -9,3 +9,6 @@ I might have to use redux. Bummer
 process.env variable was undefined because i did npm install dotenv instead of npm install dotenv save
 to force two elements to stay on the same line you must put a * beside whatever selector you are using e.g .makeHorizontal * {}
 try and implement dry principle as soon as you can
+home inline block is ok with padding of 50px but not 100px
+
+apparently putting the css of different components in different modules does not work. Had to move sidebar in nav module to everything module. Need to ask why?

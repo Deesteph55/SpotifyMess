@@ -404,3 +404,41 @@ if (process.env.NODE_ENV !== 'production') {
 				window.location.replace("https://accounts.spotify.com/authorize?client_id=6370e456654740c8bf8d82444a8b950b&redirect_uri=http:%2F%2Fadvanced-spotify.surge.sh&response_type=token&state=123")
 			}
 		}
+
+        {/* <div>
+          <table className={styles.table}>
+            <tr>
+              <th>Title</th>
+              <th>Artists</th>
+              <th>Album</th>
+            </tr>
+            {songs.map(song => (
+              <tr key={song.track.id}>
+                <td>
+                  <img src={song.track.album.images[2].url} />
+                  <p>{song.track.name}</p>
+                </td>
+                <td>
+                  <a
+                    onClick={() => {
+                      this.openArtist(song.track.artists[0].id);
+                    }}
+                  >
+                    {song.track.artists[0].name}
+                  </a>
+                </td>
+                <td>{song.track.album.name}</td>
+              </tr>
+            ))}
+          </table>
+        </div> */}
+
+          // style={{
+              //   //marginTop: "100px",
+              //   marginLeft: "15rem",
+              //   //border: 'solid red 5px',
+              //   padding: "0px 50px",
+              //   //marginRight: "0px",
+              //   height: "100vh",
+              //   overflow: "auto"
+              // }}

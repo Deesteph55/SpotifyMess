@@ -5,6 +5,7 @@ import { Button } from "semantic-ui-react";
 import { Navbar } from "./Navbar";
 import { Dashboard } from "./Dashboard";
 import style from "./everything.module.css";
+import cx from "classnames";
 
 const spotifyApi = new SpotifyWebAPI();
 var token;
@@ -64,31 +65,25 @@ class App extends Component {
         ) : null}
 
         {this.state.loggedIn ? (
-          // <div  id="outer div" >put padding 0 100px on this
           <div id="outer div">
-            <div id="app nav div">
-              <Navbar switchView={this.switchView} />
+            <div className={style.container}>
+              <div id="app nav div" className={style.nav}>
+                <Navbar switchView={this.switchView} />
+              </div>
+
+              <div
+                className={cx(style.background, style.dash)}
+                id="app dashboard div"
+              >
+                <Dashboard
+                  currentView={currentView}
+                  switchView={this.switchView}
+                />
+              </div>
             </div>
 
-            <div
-              style={{
-                //marginTop: "100px",
-                marginLeft: "15rem",
-                //paddingLeft: '17em',
-                //border: 'solid red 5px',
-                //paddingRight: "17em",
-                marginRight: "0px",
-                height: "800px",
-                overflow: "auto"
-              }}
-              className={style.background}
-              id="app dashboard div"
-            >
-              <Dashboard
-                currentView={currentView}
-                switchView={this.switchView}
-              />
-              {/* <Album/> */}
+            <div className={style.footer}>
+              <h1>Made by *******</h1>
             </div>
           </div>
         ) : null}

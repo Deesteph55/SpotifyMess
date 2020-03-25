@@ -4,6 +4,7 @@ import SpotifyWebAPI from "spotify-web-api-js";
 import { Icon } from "semantic-ui-react";
 import style from "./Search.module.css"
 const spotifyApi = new SpotifyWebAPI();
+let prev = null;
 
 
 export class SearchE extends Component {
@@ -20,45 +21,28 @@ export class SearchE extends Component {
 
   handleOnInputChange = event => {
     const newQuery = event.target.value;
-    this.getAlbum(newQuery);
-    this.getTrack(newQuery);
-    this.getArtist(newQuery);
-    this.getPlaylist(newQuery);
-
+    this.getAll(newQuery);
     this.setState({ query: event.target.value });
   };
 
-  getTrack = query => {
-    spotifyApi.searchTracks(query, { limit: 4 }).then(response => {
+  getAll = query => {
+    if(prev !== null) {
+      prev.abort();
+    }
+    prev = spotifyApi.search(query, ['album','artist','playlist','track'], {limit: 50});
+    prev.then(response => {
+      prev = null;
       this.setState({
-        trackR: response.tracks.items
-      });
-    });
-  };
-
-  getArtist = query => {
-    spotifyApi.searchArtists(query, { limit: 4 }).then(response => {
-      this.setState({
-        artistR: response.artists.items
-      });
-    });
-  };
-
-  getAlbum = query => {
-    spotifyApi.searchAlbums(query, { limit: 4 }).then(response => {
-      this.setState({
-        albumR: response.albums.items
-      });
-    });
-  };
-
-  getPlaylist = query => {
-    spotifyApi.searchPlaylists(query, { limit: 4 }).then(response => {
-      this.setState({
+        trackR: response.tracks.items,
+        artistR: response.artists.items,
+        albumR: response.albums.items,
         playlistR: response.playlists.items
-      });
+      })
+    }, function(err){
+      console.error(err);
     });
-  };
+  }
+
 
   render() {
     return (
@@ -69,6 +53,7 @@ export class SearchE extends Component {
             onChange={e => this.handleOnInputChange(e)}
             placeholder="Search"
             name="form"
+            autocomplete="off"
           />
           {/* <Icon name='search' color='teal' className={style.searchIcon}/> */}
           </form>
@@ -79,6 +64,10 @@ export class SearchE extends Component {
             artist={this.state.artistR}
             album={this.state.albumR}
             playlist={this.state.playlistR}
+            switchView={this.props.switchView}
+            setCurrentAlbum={this.props.setCurrentAlbum}
+            setCurrentArtist={this.props.setCurrentArtist}
+            setCurrentPlaylist={this.props.setCurrentPlaylist}
           />
         ) : null}
         

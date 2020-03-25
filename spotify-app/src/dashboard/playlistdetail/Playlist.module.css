@@ -1,0 +1,28 @@
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid grey;
+}
+
+.heading img {
+    height: 320px;
+    width: 320px;
+}
+
+.heading {
+    display: flex;
+    flex-direction: row;
+}
+
+.heading h1 {
+    margin-left: 20px;
+}
