@@ -97,9 +97,9 @@ export const SearchEList = ({ track, artist, album, playlist, switchView, setCur
                 style={{ verticalAlign: "middle" }}
                 onClick={() => openAlbum(unit.album.id)}
               />
-              <p style={{ fontWeight: "bold" }}>{unit.name}</p>
+              <p style={{ fontWeight: "bold"}} className={style.truncate}>{unit.name}</p>
 
-              <p style={{ verticalAlign: "bottom" }}>
+              <p style={{ verticalAlign: "bottom" }} className={style.truncate}>
                 by: {unit.artists[0].name}
               </p>
             </div>
@@ -128,8 +128,8 @@ export const SearchEList = ({ track, artist, album, playlist, switchView, setCur
                 src={unit.images.length ? unit.images[0].url : albumSrc}
                 style={{ verticalAlign: "middle" }}
               />
-              <p style={{ fontWeight: "bold" }}>{unit.name}</p>
-              <p style={{ verticalAlign: "bottom" }}>{unit.artists[0].name} </p>
+              <p style={{ fontWeight: "bold"}} className={style.truncate}>{unit.name}</p>
+              <p style={{ verticalAlign: "bottom"}} className={style.truncate}>{unit.artists[0].name} </p>
             </div>
           ))}
         </div>
@@ -154,7 +154,7 @@ export const SearchEList = ({ track, artist, album, playlist, switchView, setCur
                 src={unit.images.length ? unit.images[0].url : artistSrc}
                 style={{ verticalAlign: "middle" }}
               />
-              <p style={{ fontWeight: "bold" }}>{unit.name}</p>
+              <p style={{ fontWeight: "bold"}} className={style.truncate}>{unit.name}</p>
             </div>
           ))}
         </div>
@@ -179,9 +179,9 @@ export const SearchEList = ({ track, artist, album, playlist, switchView, setCur
                 src={unit.images.length ? unit.images[0].url : playlistSrc}
                 style={{ verticalAlign: "middle" }}
               />
-              <p style={{ fontWeight: "bold" }}>{unit.name}</p>
+              <p style={{ fontWeight: "bold"}} className={style.truncate}>{unit.name}</p>
 
-              <p style={{ verticalAlign: "bottom" }}>
+              <p style={{ verticalAlign: "bottom"}} className={style.truncate}>
                 Created by: {unit.owner.display_name}
               </p>
             </div>

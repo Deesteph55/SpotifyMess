@@ -36,10 +36,11 @@
 .dash {
   width: 85%;
   padding: 0 10px;
-  background: purple;
-  height: calc(100vh - 6.5em);
+  /* background: purple; */
+  height: calc(100vh - 7em);
   overflow: auto;
   /* border: 2px solid lawngreen; */
+  padding-bottom: 50px;
 }
 
 .footer {

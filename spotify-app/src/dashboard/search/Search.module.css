@@ -5,6 +5,14 @@
   margin-top: 20px;
 }
 
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100px;
+  padding-left: 20px;
+}
+
 .flex_parent {
   display: inline-flex;
   width: 100%;

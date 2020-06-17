@@ -3,14 +3,14 @@
   width: 70%;
   overflow: auto;
   /* border: 2px solid black; */
-  background-image: linear-gradient(0deg, #FAACA8 0%, #808080 100%);
+  background-image: linear-gradient(90deg, #FAACA8 100%, #808080 0%);
 }
 .fans {
   height: 400px;
   width: 30%;
   overflow: auto;
   /* border: 2px solid black; */
-  background-image: linear-gradient(0deg, #FAACA8 0%, #808080 100%);
+  background-image: linear-gradient(90deg, #FAACA8 100%, #808080 0%);
 }
 
 .artistH {

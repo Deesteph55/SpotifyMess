@@ -8,6 +8,8 @@ import { token, rtoken } from "./App";
 
 import * as serviceWorker from "./serviceWorker";
 
+//localhost:3000/access token/refreshtoken/home
+
 // const spotifyApi = new SpotifyWebAPI();
 
 // if (token) {
