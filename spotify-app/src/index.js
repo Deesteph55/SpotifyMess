@@ -8,7 +8,7 @@ import { token, rtoken } from "./App";
 
 import * as serviceWorker from "./serviceWorker";
 
-//localhost:3000/access token/refreshtoken/home
+//localhost:3000/access token/refreshtoken/
 
 // const spotifyApi = new SpotifyWebAPI();
 
@@ -28,13 +28,6 @@ import * as serviceWorker from "./serviceWorker";
 // );
 
 ReactDOM.render(<App />, document.getElementById("root"));
-// ReactDOM.render(routing, document.getElementById("root"));
-// ReactDOM.render(
-//   <BrowserRouter>
-//     <App />
-//   </BrowserRouter>,
-//   document.getElementById("root")
-// );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

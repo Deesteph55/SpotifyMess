@@ -4,7 +4,8 @@ import { Link } from "@material-ui/core";
 import style from "./Playlist.module.css";
 const spotifyApi = new SpotifyWebApi();
 
-export const PlaylistDetail = ({ id }) => {
+export const PlaylistDetail = (props) => {
+  let id = props.match.params.id;
   const playlistImgAlt =
     "https://www.google.com/url?sa=i&url=https%3A%2F%2Fliveforlivemusic.com%2Ffeatures%2F10-positive-benefits-of-listening-to-music-according-to-science%2F&psig=AOvVaw0J-KPfP3L--NXa7PqzLIcB&ust=1583735043304000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCICkr_qeiugCFQAAAAAdAAAAABAD";
   const [tracks, setTracks] = useState([]);
@@ -15,7 +16,7 @@ export const PlaylistDetail = ({ id }) => {
     const getPlaylistTracks = id => {
       spotifyApi.getPlaylistTracks(id, { limit: 100 }).then(response => {
         let tracks = [];
-        console.log(response.items);
+      //  console.log(response.items);
         tracks = response.items;
         setTracks(tracks);
       });
@@ -33,6 +34,8 @@ export const PlaylistDetail = ({ id }) => {
     getPlaylistTracks(id);
     getImage(id);
   }, [id, setTracks, setImage, setName]);
+
+  
 
   return (
     <div>

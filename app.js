@@ -21,8 +21,9 @@ dotenv.config({path: path.resolve(__dirname+'/.env')})
 //possible redirect https://accounts.spotify.com:8000/authorize
 var client_id = process.env.API_ID; // Your client id
 var client_secret = process.env.API_KEY; // Your secret
-//var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
-var redirect_uri = "https://spotifyreactash.herokuapp.com/callback";
+var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+//var redirect_uri = "https://spotifyreactash.herokuapp.com/callback";
+//var redirect_uri = 'http://localhost:3000/callback';
 
 
 /**
@@ -112,8 +113,8 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        //  res.redirect('http://localhost:3000/#'+
-         res.redirect('https://spotifyreactash.herokuapp.com/#'+
+          res.redirect('http://localhost:3000/#'+
+        // res.redirect('https://spotifyreactash.herokuapp.com/#'+
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token

@@ -51,13 +51,11 @@ export class Home extends Component {
   };
 
   openArtist = id => {
-    this.props.setCurrentArtist(id);
-    this.props.switchView("ADetail");
+    this.props.history.push(`/artist/${id}`)
   };
 
   openAlbum = id => {
-    this.props.setCurrentAlbum(id);
-    this.props.switchView("AlbumDetail");
+    this.props.history.push(`/album/${id}`)
   };
 
   render() {

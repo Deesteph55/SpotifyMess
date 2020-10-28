@@ -4,8 +4,8 @@ import SpotifyWebAPI from "spotify-web-api-js";
 import { SearchE } from "../search/SearchE";
 const spotifyApi = new SpotifyWebAPI();
 
-export const Album = ({ id }) => {
-  //const id = props.id;
+export const Album = (props) => {
+  let id = props.match.params.id;
 
   const [albumTracks, setAlbumTracks] = useState([]);
   const [albumImage, setAlbumImage] = useState("");

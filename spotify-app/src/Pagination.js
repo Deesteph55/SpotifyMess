@@ -3,7 +3,7 @@ import React from "react";
 export const Pagination = ({ paginate, total, currentPage }) => {
   var prevSign = "<";
   let prevBtn = null;
-  if (currentPage == 1) {
+  if (currentPage === 1) {
     prevBtn = (
       <button
         disabled
@@ -34,7 +34,7 @@ export const Pagination = ({ paginate, total, currentPage }) => {
   }
   let lastPage = Math.ceil(parseFloat(total / 4));
   let nxtBtn = null;
-  if (currentPage == lastPage) {
+  if (currentPage === lastPage) {
     nxtBtn = (
       <button
         disabled

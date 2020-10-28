@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { SearchEList } from "./SearchEList";
+import  SearchEList  from "./SearchEList";
 import SpotifyWebAPI from "spotify-web-api-js";
 import { Icon } from "semantic-ui-react";
 import style from "./Search.module.css"
@@ -64,10 +64,6 @@ export class SearchE extends Component {
             artist={this.state.artistR}
             album={this.state.albumR}
             playlist={this.state.playlistR}
-            switchView={this.props.switchView}
-            setCurrentAlbum={this.props.setCurrentAlbum}
-            setCurrentArtist={this.props.setCurrentArtist}
-            setCurrentPlaylist={this.props.setCurrentPlaylist}
           />
         ) : null}
         
