@@ -12,6 +12,7 @@ import {
 } from "semantic-ui-react";
 import styles from "./Track.module.css";
 import { Link } from "@material-ui/core";
+import { Credentials, gotParams } from "../../Credentials";
 
 const spotifyApi = new SpotifyWebAPI();
 
@@ -23,6 +24,11 @@ export class Tracks extends Component {
       total: 0,
       artistName: "",
     };
+
+     let param = gotParams();
+     var token = param.access_token;
+    // spotifyApi.setAccessToken(token);
+     console.log("token in tracks " +  token);
   }
 
   getMyTracks = () => {

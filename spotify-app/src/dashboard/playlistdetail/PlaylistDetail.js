@@ -37,6 +37,8 @@ export const PlaylistDetail = (props) => {
 
   
 
+  
+
   return (
     <div>
       <p>id : {id}</p>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch, IndexRoute } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { createBrowserHistory } from "history";
 import { Home } from "./dashboard/home/Home";
 import Login from "./Login";
 import SpotifyWebAPI from "spotify-web-api-js";
@@ -16,11 +17,14 @@ import cx from "classnames";
 import { ArtistDetail } from "./dashboard/artistdetail/ArtistDetail";
 import { Album } from "./dashboard/albumdetail/Album";
 import { PlaylistDetail } from "./dashboard/playlistdetail/PlaylistDetail";
-import { Credentials } from './Credentials';
+import { Credentials, gotParams } from './Credentials';
+import App from './App';
 
-const spotifyApi = new SpotifyWebAPI();
+// const spotifyApi = new SpotifyWebAPI();
+const customHistory = createBrowserHistory();
 
-
+// var param = gotParams();
+// var token = param.access_token;
 
 
 export default class TheApp extends Component {
@@ -32,10 +36,11 @@ export default class TheApp extends Component {
     //heroku might not agree with the routing.
     //need to figure out to put tokens in route path
     //can actually have a dashboard component and put routes in there
+   // console.log(token);
     return (
       <div className="Routingpoint">
         {/* <Router basename="/callback"> */}
-        <Router>
+        <Router history={customHistory}>
           <>
             <div className={dash.container}>
               <div id="app nav div" className={nav.nav}>
@@ -43,15 +48,15 @@ export default class TheApp extends Component {
               </div>
               <div id="dashboard" className={cx(dash.background, dash.dash)}>
                 <Switch>
-                  {/* <Route exact path="/" component={Login} /> */}
-                  <IndexRoute component={Login} />
-                  <Route exact path="/home" component={Home} />
-                  <Route exact path="/tracks" component={Tracks} />
-                  <Route exact path="/search" component={SearchE} />
-                  <Route exact path="/popular" component={Popular} />
-                  <Route exact path="/playlist" component={Playlist} />
-                  <Route exact path="/artist/:id" component={ArtistDetail} />
-                  <Route exact path="/album/:id" component={Album} />
+                  <Route exact path="/" component={Login} />
+                  {/* <IndexRoute component={Login} /> */}
+                  <Route path="/home" component={Home} />
+                  <Route path="/tracks" component={Tracks} />
+                  <Route path="/search" component={SearchE} />
+                  <Route path="/popular" component={Popular} />
+                  <Route path="/playlist" component={Playlist} />
+                  <Route path="/artist/:id" component={ArtistDetail} />
+                  <Route path="/album/:id" component={Album} />
                   <Route
                     exact
                     path="/playlist/:id"

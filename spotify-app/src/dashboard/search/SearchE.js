@@ -66,6 +66,7 @@ export class SearchE extends Component {
             playlist={this.state.playlistR}
           />
         ) : null}
+        <h1>Hello</h1>
         
       </div>
     );

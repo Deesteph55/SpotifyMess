@@ -13,6 +13,7 @@ export default class Login extends Component {
     // const params = this.getHashParams();
     const params = Credentials();
     token = params.access_token;
+    //token = 'BQDm0fAEvTY6K3WRdzqSgWwGLtNqsZwKQZqZD6KWYeRj_fQneRx3cBg0f-BLDx_JkZ01NKU-yiTgrFpVAtDGKt3xIN_K0ZU1es9QB2UTVYKmJ3HinrFgPEoVfnRCA9q-rUXCKnzzMK4F67S7dg7vv7xkgUBbvOO11yAr0zoOD71n1Ty8v7pmfB9C5TfTFPvVG9Rt3DVfRJzv';
     rtoken = params.refresh_token;
 
     if (token) {
@@ -40,6 +41,8 @@ export default class Login extends Component {
   //   return hashParams;
   // };
 
+
+  
   movetoHome() {
     if (this.state.loggedIn) {
       this.props.history.push(`/home`);
@@ -50,6 +53,7 @@ export default class Login extends Component {
       <div>
         <h1>DENS</h1>
         <a href="/login">
+        {/* <a href="http://localhost:8888"> */}
           <Button inverted color="pink">
             {" "}
             Login to Spotify
