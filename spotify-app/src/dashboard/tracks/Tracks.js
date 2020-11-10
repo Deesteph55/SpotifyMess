@@ -25,10 +25,10 @@ export class Tracks extends Component {
       artistName: "",
     };
 
-     let param = gotParams();
-     var token = param.access_token;
-    // spotifyApi.setAccessToken(token);
-     console.log("token in tracks " +  token);
+    //  let param = gotParams();
+    //  var token = param.access_token;
+    //  spotifyApi.setAccessToken(token);
+    //  console.log("token in tracks " +  token);
   }
 
   getMyTracks = () => {
