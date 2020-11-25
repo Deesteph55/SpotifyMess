@@ -55,7 +55,7 @@ export default class TheApp extends Component {
                   <Route path="/search" component={SearchE} />
                   <Route path="/popular" component={Popular} />
                   <Route path="/playlist" component={Playlist} />
-                  <Route path="/artist/:id" component={ArtistDetail} />
+                  <Route path="/ar tist/:id" component={ArtistDetail} />
                   <Route path="/album/:id" component={Album} />
                   <Route
                     exact

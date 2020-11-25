@@ -54,7 +54,6 @@ class App extends Component {
             </p>
           </div>
         ) : null} */}
-
         <TheApp/>
 
         {/* {this.state.loggedIn ? (<TheApp/>) : null} */}

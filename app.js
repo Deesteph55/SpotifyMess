@@ -1,5 +1,6 @@
 
-var PORT = process.env.PORT || 8888;
+ var PORT = process.env.PORT || 8888;
+//var PORT = process.env.PORT || 3000;
 var express = require("express"); // Express web server framework
 var request = require("request"); // "Request" library
 var cors = require("cors");
@@ -42,6 +43,10 @@ app
   .use(express.static(path.join(__dirname, "spotify-app/build")))
   .use(cors())
   .use(cookieParser());
+// app
+//   .use(express.static(path.join(__dirname, "dist")))
+//   .use(cors())
+//   .use(cookieParser());
 
 app.get("/login", function (req, res) {
   var state = generateRandomString(16);
@@ -178,8 +183,8 @@ app.get("/refresh_token", function (req, res) {
 //   res.sendFile(path.join(__dirname, 'spotify-app/build'));
 // });
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'spotify-app/build', 'index.html'));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
 // app.use((req, res, next) => {
